@@ -5,13 +5,14 @@ typedef struct joueur_s{
   int id;
   int pos_x;
   int pos_y;
+  char direction;
   int vie;
   int vitesse;
   int nb_bomb;
   int puissance;
 }joueur_t;
 
-void deplacerJoueur(joueur_t, int jeu[M][N]);
+void deplacerJoueur(joueur_t j, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][N]);
 
 void Bombe(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int x, int y, int jeu[M][N]);
 

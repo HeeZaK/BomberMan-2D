@@ -3,23 +3,27 @@
 #include <matriceBombe.h>
 #include <joueur.h>
 #include <unistd.h>
+#include <SDL2/SDL.h>
 
 void deplacerJoueur(joueur_t j, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][N]){
+
+  SDL_Event event;
+
   //Si une touche a ete pressee
-  /*if( event.type == SDL_KEYDOWN ){
+  if( event.type == SDL_KEYDOWN ){
     switch (event.type){
       case SDL_KEYDOWN:
       // La touche pressée :
-        switch (event.key.keysym.scancode) {
+        switch (event.key.keysym.sym) {
           //Les 4 touches différentes pour avoir 4 joueurs en local sur le même clavier
-          case SDL_SCANCODE_Z:
-          case SDL_SCANCODE_T:
-          case SDL_SCANCODE_I:
-          case SDL_SCANCODE_UP:
+          case SDLK_z:
+          case SDLK_t:
+          case SDLK_i:
+          case SDLK_UP:
             //Vérifie si le joueur ne va pas dans un mur ou dans un joueur
-            if((j.pos_x+1)==0 || (j.pos_x+1)>=3)){
+            if((j.pos_x+1)==0 || (j.pos_x+1)>=3){
               //Vérifie si le joueur marche sur un pouvoir
-              if((j.pos_x+1)>=3)){
+              if((j.pos_x+1)>=3){
                 effetPouvoir(j, j.pos_x+1, j.pos_y, jeu);
               }
               j.pos_x = j.pos_x++;
@@ -28,14 +32,14 @@ void deplacerJoueur(joueur_t j, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M
             break;
 
           //Les 4 touches différentes pour avoir 4 joueurs en local sur le même clavier
-          case SDL_SCANCODE_Q:
-          case SDL_SCANCODE_F:
-          case SDL_SCANCODE_J:
-          case SDL_SCANCODE_LEFT:
+          case SDLK_q:
+          case SDLK_f:
+          case SDLK_j:
+          case SDLK_LEFT:
             //Vérifie si le joueur ne va pas dans un mur ou dans un joueur
-            if((j.pos_y-1)==0 || (j.pos_y-1)>=3)){
+            if((j.pos_y-1)==0 || (j.pos_y-1)>=3){
               //Vérifie si le joueur marche sur un pouvoir
-              if((j.pos_y-1)>=3)){
+              if((j.pos_y-1)>=3){
                 effetPouvoir(j, j.pos_x, j.pos_y-1, jeu);
               }
               j.pos_y = j.pos_y--;
@@ -44,14 +48,14 @@ void deplacerJoueur(joueur_t j, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M
             break;
 
           //Les 4 touches différentes pour avoir 4 joueurs en local sur le même clavier
-          case SDL_SCANCODE_S:
-          case SDL_SCANCODE_G:
-          case SDL_SCANCODE_K:
-          case SDL_SCANCODE_DOWN:
+          case SDLK_s:
+          case SDLK_g:
+          case SDLK_k:
+          case SDLK_DOWN:
             //Vérifie si le joueur ne va pas dans un mur ou dans un joueur
-            if((j.pos_x-1)==0 || (j.pos_x-1)>=3)){
+            if((j.pos_x-1)==0 || (j.pos_x-1)>=3){
               //Vérifie si le joueur marche sur un pouvoir
-              if((j.pos_x-1)>=3)){
+              if((j.pos_x-1)>=3){
                 effetPouvoir(j, j.pos_x-1, j.pos_y, jeu);
               }
               j.pos_x = j.pos_x--;
@@ -60,14 +64,14 @@ void deplacerJoueur(joueur_t j, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M
             break;
 
           //Les 4 touches différentes pour avoir 4 joueurs en local sur le même clavier
-          case SDL_SCANCODE_D:
-          case SDL_SCANCODE_H:
-          case SDL_SCANCODE_L:
-          case SDL_SCANCODE_RIGHT:
+          case SDLK_d:
+          case SDLK_h:
+          case SDLK_l:
+          case SDLK_RIGHT:
             //Vérifie si le joueur ne va pas dans un mur ou dans un joueur
-            if((j.pos_y+1)==0 || (j.pos_y+1)>=3)){
+            if((j.pos_y+1)==0 || (j.pos_y+1)>=3){
               //Vérifie si le joueur marche sur un pouvoir
-              if((j.pos_y+1)>=3)){
+              if((j.pos_y+1)>=3){
                 effetPouvoir(j, j.pos_x, j.pos_y+1, jeu);
               }
               j.pos_y = j.pos_y++;
@@ -76,10 +80,10 @@ void deplacerJoueur(joueur_t j, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M
             break;
 
           //Les 4 touches différentes pour poser une bombe
-          case SDL_SCANCODE_A:
-          case SDL_SCANCODE_R:
-          case SDL_SCANCODE_U:
-          case SDL_SCANCODE_RCTRL:
+          case SDLK_a:
+          case SDLK_r:
+          case SDLK_u:
+          case SDLK_RCTRL:
             //Direction Nord
             if(j.direction=='N'){
               Detruire(j,j2,j3,j4,j.pos_x+1,j.pos_y,jeu);
@@ -98,7 +102,7 @@ void deplacerJoueur(joueur_t j, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M
             }
         }
     }
-  }*/
+  }
 }
 
 void Bombe(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int x, int y, int jeu[M][N]){

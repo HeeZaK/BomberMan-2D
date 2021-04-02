@@ -3,11 +3,10 @@
 #include "../lib/SDL2/SDL.h"
 #include "../lib/SDL2/SDL_ttf.h"
 #include "../lib/SDL2/SDL_image.h"
-#include "../lib/matriceBombe.h"
 #include <unistd.h>
 #include <time.h>
-#define N 15
-#define M 11
+#define N 17
+#define M 13
 
 // vider la map totalement
 void innitMatrice(int jeu[M][N]){
@@ -35,7 +34,7 @@ void placerMurCassable(int jeu[M][N]){
   for(int i=1; i<M-1;i++){
     for(int j=1; j<N-1;j++){
       if(jeu[i][j]==0){
-        if(rand()%100 < 88){
+        if(rand()%100 < 45){
           jeu[i][j]=2;
         }
       }
@@ -62,9 +61,14 @@ void placerMurCassable(int jeu[M][N]){
   //place par défaut les spawns des joueurs
 
   jeu[1][1]=-1; // joueur 1
-  jeu[1][13]=-2; // joueur 2
-  jeu[9][13]=-3; // joueur 3
-  jeu[9][1]=-4; // joueur 4
+
+  //place par défaut les spawns des monstres IA
+
+  jeu[9][6]=0; // espace libre
+  jeu[9][7]=7; // position monstre
+  jeu[9][8]=0; // espace libre
+
+
 
 
 }
@@ -94,6 +98,9 @@ void afficherMatrice(int jeu[M][N]){
         case -4:
           printf("4 "); // joueur4
           break;
+        case 7:
+          printf("7 "); // Monstres 1
+          break;
         break;
       }
     }printf("\n");
@@ -105,9 +112,9 @@ int main(int argc, char *argv[]) {
     int jeu[M][N];
     SDL_Window *win = NULL;
     SDL_Renderer *renderer = NULL;
-    SDL_Texture *bitmapFond, *bitmapMurI, *bitmapMurC, *bitmapJ1, *bitmapJ2, *bitmapJ3, *bitmapJ4 = NULL;
-    int posX = 100, posY = 100, width = 840, height = 616, w = 56, h = 56;
-    SDL_Rect rectMurI, rectMurC, rectJ1, rectJ2, rectJ3, rectJ4;
+    SDL_Texture *bitmapFond, *bitmapMurI, *bitmapMurC, *bitmapJ1, *bitmapM1 = NULL;
+    int posX = 100, posY = 100, width = 952, height = 728, w = 56, h = 56;
+    SDL_Rect rectMurI, rectMurC, rectJ1, rectM1;
 
 
     // Initialisation de l'ecran SDL
@@ -117,7 +124,7 @@ int main(int argc, char *argv[]) {
     //
 
     // Affichage fond
-    bitmapFond = IMG_LoadTexture(renderer, "../assets/map/sol.png"); //Fond
+    bitmapFond = IMG_LoadTexture(renderer, "../assets/map/sol.png"); //MurIncassable
     SDL_RenderCopy(renderer, bitmapFond, NULL, NULL);
     //
 
@@ -133,9 +140,7 @@ int main(int argc, char *argv[]) {
     bitmapMurI = IMG_LoadTexture(renderer, "../assets/map/murincassable1.png"); //MurIncassable
     bitmapMurC = IMG_LoadTexture(renderer, "../assets/map/murcassable1.png");   //MurCassable
     bitmapJ1 = IMG_LoadTexture(renderer, "../assets/bonhomme/rouge/bonhommeAvant.png");  //joueur1
-    bitmapJ2 = IMG_LoadTexture(renderer, "../assets/bonhomme/bleu/bonhommeAvant.png");   //joueur2
-    bitmapJ3 = IMG_LoadTexture(renderer, "../assets/bonhomme/jaune/bonhommeAvant.png");  //joueur3
-    bitmapJ4 = IMG_LoadTexture(renderer, "../assets/bonhomme/vert/bonhommeAvant.png");   //joueur4
+    bitmapM1 = IMG_LoadTexture(renderer, "../assets/monstres/petit/monstreAvant.png");  //Monstre
     //
 
       for(int i=0; i<M;i++){
@@ -165,26 +170,12 @@ int main(int argc, char *argv[]) {
             rectJ1.h = h;
             SDL_RenderCopy(renderer, bitmapJ1, NULL, &rectJ1);
             break;
-            case -2:             //joueur2
-            rectJ2.x = w * j;
-            rectJ2.y = h * i;
-            rectJ2.w = w;
-            rectJ2.h = h;
-            SDL_RenderCopy(renderer, bitmapJ2, NULL, &rectJ2);
-            break;
-            case -3:              //joueur3
-            rectJ3.x = w * j;
-            rectJ3.y = h * i;
-            rectJ3.w = w;
-            rectJ3.h = h;
-            SDL_RenderCopy(renderer, bitmapJ3, NULL, &rectJ3);
-            break;
-            case -4:                //joueur4
-            rectJ4.x = w * j;
-            rectJ4.y = h * i;
-            rectJ4.w = w;
-            rectJ4.h = h;
-            SDL_RenderCopy(renderer, bitmapJ4, NULL, &rectJ4);
+            case 7:            //Monstre
+            rectJ1.x = w * j;
+            rectJ1.y = h * i;
+            rectJ1.w = w;
+            rectJ1.h = h;
+            SDL_RenderCopy(renderer, bitmapM1, NULL, &rectM1);
             break;
           break;
           }
@@ -205,9 +196,8 @@ int main(int argc, char *argv[]) {
     SDL_DestroyTexture(bitmapMurI); //Mur Incassable
     SDL_DestroyTexture(bitmapMurC); //Mur MurCassable
     SDL_DestroyTexture(bitmapJ1); // joueur1
-    SDL_DestroyTexture(bitmapJ2); // joueur2
-    SDL_DestroyTexture(bitmapJ3); // joueur3
-    SDL_DestroyTexture(bitmapJ4); // joueur4
+    SDL_DestroyTexture(bitmapM1); // joueur1
+
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(win);

@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <matriceBombe.h>
-#include <joueur.h>
+#include "../lib/matriceBombe.h"
+#include "../lib/joueur.h"
 #include <unistd.h>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
+#include <time.h>
 
 void deplacerJoueur(joueur_t j, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][N]){
 

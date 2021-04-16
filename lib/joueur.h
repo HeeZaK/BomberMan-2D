@@ -33,8 +33,10 @@ typedef struct joueur_s{
   bombe_t bombe[9];
 }joueur_t;
 
-void effetPouvoir(joueur_t j, int x, int y, int jeu[M][N]);
+void effetPouvoir(joueur_t * j, int x, int y, int jeu[M][N]);
 
 int checkCollision(joueur_t * j, int direction, int jeu[M][N]);
+
+void changerRotaJoueur(joueur_t * j);
 
 void deplacerJ(joueur_t * j, int direction ,int jeu[M][N]);

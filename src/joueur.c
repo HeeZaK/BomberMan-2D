@@ -5,12 +5,12 @@
 
 
 
-void effetPouvoir(joueur_t j, int x, int y, int jeu[M][N]){
+void effetPouvoir(joueur_t * j, int x, int y, int jeu[M][N]){
   //PV de la vitesse
   if(jeu[x][y]==3){
     //Vitesse max : 9
-    if(j.vitesse<9){
-      j.vitesse++;
+    if(j->vitesse<9){
+      j->vitesse++;
       /*Augmenter de 10% la vitesse*/
     }
   }
@@ -18,24 +18,24 @@ void effetPouvoir(joueur_t j, int x, int y, int jeu[M][N]){
   //PV de la puissance
   else if(jeu[x][y]==4){
     //Puissance max : 9
-    if(j.puissance<9){
-      j.puissance++;
+    if(j->puissance<9){
+      j->puissance++;
     }
   }
 
   //Nombre de bombe du joueur
   else if(jeu[x][y]==5){
     //Nombre de bombe max : 9
-    if(j.nb_bomb<9){
-      j.nb_bomb++;
+    if(j->nb_bomb<9){
+      j->nb_bomb++;
     }
   }
 
   //Pouvoir d'une vie en plus
   else if(jeu[x][y]==6){
     //Nombre de vie en plus max : 1
-    if(j.vie==0){
-      j.vie++;
+    if(j->vie==0){
+      j->vie++;
     }
   }
 }
@@ -50,7 +50,7 @@ int checkCollision(joueur_t * j, int direction, int jeu[M][N]){
         return 1;
       }
       else if(jeu[j->pos_x][j->pos_y+1]>=3){
-        //effetPouvoir(j, j.pos_x, j.pos_y+1, jeu);
+        effetPouvoir(j, j->pos_x, j->pos_y+1, jeu);
         return 1;
       }
       return 0;
@@ -61,7 +61,7 @@ int checkCollision(joueur_t * j, int direction, int jeu[M][N]){
         return 1;
       }
       else if(jeu[j->pos_x+1][j->pos_y]>=3){
-        //effetPouvoir(j, j.pos_x+1, j.pos_y, jeu);
+        effetPouvoir(j, j->pos_x+1, j->pos_y, jeu);
         return 1;
       }
       return 0;
@@ -72,7 +72,7 @@ int checkCollision(joueur_t * j, int direction, int jeu[M][N]){
         return 1;
       }
       else if(jeu[j->pos_x][j->pos_y-1]>=3){
-        //effetPouvoir(j, j.pos_x, j.pos_y-1, jeu);
+        effetPouvoir(j, j->pos_x, j->pos_y-1, jeu);
         return 1;
       }
       return 0;
@@ -83,7 +83,7 @@ int checkCollision(joueur_t * j, int direction, int jeu[M][N]){
         return 1;
       }
       else if(jeu[j->pos_x-1][j->pos_y]>=3){
-      //effetPouvoir(j, j.pos_x-1, j.pos_y, jeu);
+        effetPouvoir(j, j->pos_x-1, j->pos_y, jeu);
         return 1;
       }
       return 0;
@@ -91,6 +91,22 @@ int checkCollision(joueur_t * j, int direction, int jeu[M][N]){
   }
 }
 
+void changerRotaJoueur(joueur_t * j){
+  switch(j->direction){
+    case 'N':
+      j->direction='E';
+      break;
+    case 'E':
+      j->direction='S';
+      break;
+    case 'S':
+      j->direction='W';
+      break;
+    case 'W':
+      j->direction='N';
+      break;
+  }
+}
 
 void deplacerJ(joueur_t * j, int direction ,int jeu[M][N]){
   //Direction prend 0 : droite, 1 : bas, 2 : gauche, 3 : haut

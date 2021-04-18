@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <SDL2/SDL.h>
 #include "../lib/joueur.h"
 
 
@@ -163,5 +163,20 @@ void deplacerJ(joueur_t * j, int direction ,int jeu[M][N]){
       j->direction='N';
       break;
   }
+  j->timer = SDL_GetTicks();
 
+}
+
+
+joueur_t * verifGagnant(joueur_t * j1, joueur_t * j2, joueur_t * j3, joueur_t * j4, int jeu[M][N]){
+
+  if(j2->pos_x==-1 && j3->pos_x==-1 && j4->pos_x==-1 )
+    return (j1);
+  else if(j1->pos_x==-1 && j3->pos_x==-1 && j4->pos_x==-1 )
+    return (j2);
+  else if(j1->pos_x==-1 && j2->pos_x==-1 && j4->pos_x==-1 )
+    return (j3);
+  else if(j1->pos_x==-1 && j2->pos_x==-1 && j3->pos_x==-1 )
+    return (j4);
+  return (NULL);
 }

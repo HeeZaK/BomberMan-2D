@@ -9,7 +9,7 @@
 #include <time.h>
 
 
-void afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][N]) {
+joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][N]) {
 
   SDL_Window *win = NULL;
   SDL_Renderer *renderer = NULL;
@@ -19,7 +19,6 @@ void afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][
   SDL_Texture *bitmapJ2N, *bitmapJ2E, *bitmapJ2S, *bitmapJ2W;
   SDL_Texture *bitmapJ3N, *bitmapJ3E, *bitmapJ3S, *bitmapJ3W;
   SDL_Texture *bitmapJ4N, *bitmapJ4E, *bitmapJ4S, *bitmapJ4W;
-  SDL_Texture *bitmapM1;
   SDL_Texture *bitmapBombeJ1, *bitmapBombeJ2, *bitmapBombeJ3, *bitmapBombeJ4;
   SDL_Texture *bitmapPlusBombe, *bitmapVitesse, *bitmapPuissance, *bitmapShield;
 
@@ -29,15 +28,10 @@ void afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][
   SDL_Rect rectJ2N, rectJ2E, rectJ2S, rectJ2W;
   SDL_Rect rectJ3N, rectJ3E, rectJ3S, rectJ3W;
   SDL_Rect rectJ4N, rectJ4E, rectJ4S, rectJ4W;
-  SDL_Rect rectM1;
   SDL_Rect bombeJ1, bombeJ2, bombeJ3, bombeJ4;
   SDL_Rect plusBombe, vitesse, puissance, shield;
 
-  int x1=0,y1=0, x2=0,y2=0, x3=0,y3=0, x4=0,y4=0;
-  int flagJ1=0, flagJ2=0, flagJ3=0, flagJ4=0;
-  clock_t timeOutJ1, timeOutJ2, timeOutJ3, timeOutJ4;
-
-  int bomb_tmp = 0;
+  joueur_t * gagnant=NULL;
 
   win = SDL_CreateWindow("(= BomberMan =)", posX, posY, width, height, 0);
   renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
@@ -75,8 +69,6 @@ void afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][
   bitmapJ4S = IMG_LoadTexture(renderer, "../assets/bonhomme/vert/bonhommeAvant.png");
   bitmapJ4W = IMG_LoadTexture(renderer, "../assets/bonhomme/vert/bonhommeGauche.png");
 
-  bitmapM1 = IMG_LoadTexture(renderer, "../assets/monstres/petit/monstreAvant.png");   //monstre petit
-
   bitmapBombeJ1 = IMG_LoadTexture(renderer, "../assets/bombe/bombe_rouge.png");   //bombe J1
   bitmapBombeJ2 = IMG_LoadTexture(renderer, "../assets/bombe/bombe_bleu.png");   //bombe J2
   bitmapBombeJ3 = IMG_LoadTexture(renderer, "../assets/bombe/bombe_jaune.png");   //bombe J3
@@ -96,22 +88,31 @@ void afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][
     while( continuer ){
       SDL_PollEvent(&event); /* On attend un événement qu'on récupère dans event */
       switch (event.type){
+        //fermer la fenêtre
+        case SDL_QUIT:
+          return NULL;
+          break;
+
         case SDL_KEYDOWN:
         // La touche pressée :
           switch (event.key.keysym.sym) {
 
             //joueur1
             case SDLK_z:
-              deplacerJ(&j1,3,jeu);
+              if(j1.timer==0)
+                deplacerJ(&j1,3,jeu);
               break;
             case SDLK_q:
-              deplacerJ(&j1,2,jeu);
+              if(j1.timer==0)
+                deplacerJ(&j1,2,jeu);
               break;
             case SDLK_s:
-              deplacerJ(&j1,1,jeu);
+              if(j1.timer==0)
+                deplacerJ(&j1,1,jeu);
               break;
             case SDLK_d:
-              deplacerJ(&j1,0,jeu);
+              if(j1.timer==0)
+                deplacerJ(&j1,0,jeu);
               break;
             case SDLK_a:
               if(checkPoseBombe(&j1,jeu)){
@@ -119,21 +120,26 @@ void afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][
               break;
             case SDLK_e:
               //changer rotation
-              changerRotaJoueur(&j1);
+              if(j1.timer==0)
+                changerRotaJoueur(&j1);
               break;
 
             //joueur2
             case SDLK_t:
-              deplacerJ(&j2,3,jeu);
+              if(j2.timer==0)
+                deplacerJ(&j2,3,jeu);
               break;
             case SDLK_f:
-              deplacerJ(&j2,2,jeu);
+              if(j2.timer==0)
+                deplacerJ(&j2,2,jeu);
               break;
             case SDLK_g:
-              deplacerJ(&j2,1,jeu);
+              if(j2.timer==0)
+                deplacerJ(&j2,1,jeu);
               break;
             case SDLK_h:
-              deplacerJ(&j2,0,jeu);
+              if(j2.timer==0)
+                deplacerJ(&j2,0,jeu);
               break;
             case SDLK_r:
               if(checkPoseBombe(&j2,jeu)){
@@ -141,21 +147,26 @@ void afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][
               break;
             case SDLK_y:
               //changer rotation
-              changerRotaJoueur(&j2);
+              if(j2.timer==0)
+                changerRotaJoueur(&j2);
               break;
 
             //joueur3
             case SDLK_i:
-              deplacerJ(&j3,3,jeu);
+              if(j3.timer==0)
+                deplacerJ(&j3,3,jeu);
               break;
             case SDLK_j:
-              deplacerJ(&j3,2,jeu);
+              if(j3.timer==0)
+                deplacerJ(&j3,2,jeu);
               break;
             case SDLK_k:
-              deplacerJ(&j3,1,jeu);
+              if(j3.timer==0)
+                deplacerJ(&j3,1,jeu);
               break;
             case SDLK_l:
-              deplacerJ(&j3,0,jeu);
+              if(j3.timer==0)
+                deplacerJ(&j3,0,jeu);
               break;
             case SDLK_u:
               if(checkPoseBombe(&j3,jeu)){
@@ -163,21 +174,26 @@ void afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][
               break;
             case SDLK_o:
               //changer rotation
-              changerRotaJoueur(&j3);
+              if(j3.timer==0)
+                changerRotaJoueur(&j3);
               break;
 
             //joueur4
             case SDLK_UP:
-              deplacerJ(&j4,3,jeu);
+              if(j4.timer==0)
+                deplacerJ(&j4,3,jeu);
               break;
             case SDLK_LEFT:
-              deplacerJ(&j4,2,jeu);
+              if(j4.timer==0)
+                deplacerJ(&j4,2,jeu);
               break;
             case SDLK_DOWN:
-              deplacerJ(&j4,1,jeu);
+              if(j4.timer==0)
+                deplacerJ(&j4,1,jeu);
               break;
             case SDLK_RIGHT:
-              deplacerJ(&j4,0,jeu);
+              if(j4.timer==0)
+                deplacerJ(&j4,0,jeu);
               break;
             case SDLK_RCTRL:
               if(checkPoseBombe(&j4,jeu)){
@@ -185,7 +201,8 @@ void afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][
               break;
             case SDLK_RSHIFT:
               //changer rotation
-              changerRotaJoueur(&j4);
+              if(j4.timer==0)
+                changerRotaJoueur(&j4);
               break;
           }
           break;
@@ -225,6 +242,27 @@ void afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][
           j4.bombe[i].pos_x=0;
           j4.bombe[i].pos_y=0;
         }
+      }
+
+      if(j1.timer!=0 && (SDL_GetTicks() > j1.timer + 1000 - (100*j1.vitesse))){
+        j1.timer=0;
+      }
+
+      if(j2.timer!=0 && (SDL_GetTicks() > j2.timer + 1000 - (100*j2.vitesse))){
+        j2.timer=0;
+      }
+
+      if(j3.timer!=0 && (SDL_GetTicks() > j3.timer + 1000 - (100*j3.vitesse))){
+        j3.timer=0;
+      }
+
+      if(j4.timer!=0 && (SDL_GetTicks() > j4.timer + 1000 - (100*j4.vitesse))){
+        j4.timer=0;
+      }
+
+
+      if((gagnant=verifGagnant(&j1,&j2,&j3,&j4,jeu))!=NULL){
+        return(gagnant);
       }
 
       SDL_RenderCopy(renderer, bitmapFond, NULL, NULL);
@@ -376,13 +414,6 @@ void afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][
                   break;
               }
             break;
-            case 7:
-            rectM1.x = w * j;
-            rectM1.y = h * i;
-            rectM1.w = w;
-            rectM1.h = h;
-            SDL_RenderCopy(renderer, bitmapM1, NULL, &rectM1);
-            break;
             case -11:
             bombeJ1.x = w * j;
             bombeJ1.y = h * i;
@@ -446,6 +477,7 @@ void afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][
       SDL_RenderPresent(renderer); //affichage de tout
       SDL_Delay(1000/60);
       SDL_RenderClear(renderer);
+
   }
 
   SDL_DestroyTexture(bitmapFond); //Fond
@@ -475,7 +507,6 @@ void afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][
   SDL_DestroyTexture(bitmapJ4S);
   SDL_DestroyTexture(bitmapJ4W);
 
-  SDL_DestroyTexture(bitmapM1); // monstre petit
   SDL_DestroyTexture(bitmapBombeJ1);
   SDL_DestroyTexture(bitmapBombeJ2);
   SDL_DestroyTexture(bitmapBombeJ3);

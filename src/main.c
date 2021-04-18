@@ -25,9 +25,15 @@ int main(int argc, char ** argv){
   else if(valMenu==2){
     //Mode solo
     int num_niv = menuSolo();
-    if(num_niv!=0){
-      
+    /*if(num_niv==1){
+      level1();
     }
+    else if(num_niv==2){
+      level2();
+    }
+    else if(num_niv==3){
+      level3();
+    }*/
   }
   else{
     //Exit

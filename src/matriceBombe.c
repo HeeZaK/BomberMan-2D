@@ -65,10 +65,10 @@ void afficherMatrice(int jeu[M][N]){
     for(int j=0; j<N;j++){
       switch (jeu[i][j]) {
         case 0:
-          printf("○ "); // pas de murs
+          printf("o "); // pas de murs
           break;
         case 1:
-          printf("● "); // murs pleins
+          printf("* "); // murs pleins
           break;
         case 2:
           printf("# "); // murs creux
@@ -85,6 +85,9 @@ void afficherMatrice(int jeu[M][N]){
         case -4:
           printf("4 "); // joueur4
           break;
+        default:
+          printf("%i", jeu[i][j]);
+
         break;
       }
     }printf("\n");

@@ -3,7 +3,7 @@
 #include <SDL2/SDL.h>
 
 #include "../lib/bombe.h"
-//#include "../lib/joueur.h"
+
 #include <unistd.h>
 #include <time.h>
 
@@ -13,13 +13,14 @@ int valides(int x, int y){
 
 void effetBombe(joueur_t * j1, joueur_t * j2, joueur_t * j3, joueur_t * j4, int x, int y, int jeu[M][N]){
 
-
   //effet de la bombe sur un joueur sur la trajectoire de la bombe
   if(x==j1->pos_x && y==j1->pos_y){
     if(j1->vie==1){
       j1->vie=0;
     }
     else{
+      j1->pos_x = -1;
+      j1->pos_y = -1;
       jeu[x][y]=0;
     }
   }
@@ -29,6 +30,8 @@ void effetBombe(joueur_t * j1, joueur_t * j2, joueur_t * j3, joueur_t * j4, int 
       j2->vie=0;
     }
     else{
+      j2->pos_x = -1;
+      j2->pos_y = -1;
       jeu[x][y]=0;
     }
   }
@@ -38,6 +41,8 @@ void effetBombe(joueur_t * j1, joueur_t * j2, joueur_t * j3, joueur_t * j4, int 
       j3->vie=0;
     }
     else{
+      j3->pos_x = -1;
+      j3->pos_y = -1;
       jeu[x][y]=0;
     }
   }
@@ -47,15 +52,15 @@ void effetBombe(joueur_t * j1, joueur_t * j2, joueur_t * j3, joueur_t * j4, int 
       j4->vie=0;
     }
     else{
+      j4->pos_x = -1;
+      j4->pos_y = -1;
       jeu[x][y]=0;
     }
   }
 
   //effet de la bombe sur un mur cassable
   else if(jeu[x][y]==2){
-    //jeu[x][y] = -5;
-    //sleep(1); // aide pour l'affichage
-    jeu[x][y] = rand()%4 + 3; // a vérifier pour faire apparaitre les pouvoir au sol
+    jeu[x][y] = rand()%4 + 3;
     if(rand()%100 < 25){ // il y a 25% de chance qu'un mur explosé ne donne pas de pouvoir
       jeu[x][y]=0;
     }
@@ -63,9 +68,6 @@ void effetBombe(joueur_t * j1, joueur_t * j2, joueur_t * j3, joueur_t * j4, int 
 
   //supprime le pouvoir au sol
   else if(jeu[x][y]>=3){
-    jeu[x][y] = -5;
-    //sleep(1); // aide pour l'affichage
-
     jeu[x][y]=0;
   }
 }

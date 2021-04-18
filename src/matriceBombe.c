@@ -29,11 +29,11 @@ void placerMurIncassable(int jeu[M][N]){
 }
 
 // placer les murs cassable de la map
-void placerMurCassable(int jeu[M][N]){
+void placerMurCassable(int jeu[M][N], int proba){
   for(int i=1; i<M-1;i++){
     for(int j=1; j<N-1;j++){
       if(jeu[i][j]==0){
-        if(rand()%100 < 85){
+        if(rand()%100 < proba){
           jeu[i][j]=2;
         }
       }

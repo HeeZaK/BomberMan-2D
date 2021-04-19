@@ -152,6 +152,13 @@ int menu(){
       SDL_DestroyTexture(textureMSblanc);
       SDL_DestroyTexture(textureExitOrange);
       SDL_DestroyTexture(textureExitBlanc);
+
+      SDL_FreeSurface(MMorange);
+      SDL_FreeSurface(MMblanc);
+      SDL_FreeSurface(MSorange);
+      SDL_FreeSurface(MSblanc);
+      SDL_FreeSurface(ExitOrange);
+      SDL_FreeSurface(ExitBlanc);
       //Libération mémoire du rendu
 
       SDL_DestroyRenderer(pRenderer);
@@ -324,11 +331,20 @@ int menuMultijoueur(){
       }
 
       SDL_DestroyTexture(textureDeuxOrange);
+      SDL_DestroyTexture(texture);
       SDL_DestroyTexture(textureDeuxBlanc);
       SDL_DestroyTexture(textureTroisOrange);
       SDL_DestroyTexture(textureTroisBlanc);
       SDL_DestroyTexture(textureQuatreOrange);
       SDL_DestroyTexture(textureQuatreBlanc);
+
+      SDL_FreeSurface(surface);
+      SDL_FreeSurface(deuxOrange);
+      SDL_FreeSurface(deuxBlanc);
+      SDL_FreeSurface(troisOrange);
+      SDL_FreeSurface(troisBlanc);
+      SDL_FreeSurface(quatreOrange);
+      SDL_FreeSurface(quatreBlanc);
 
       //Libération mémoire du rendu
 
@@ -367,6 +383,7 @@ int lancerPartieMulti(int nb_joueur){
 
 
   SDL_Init(SDL_INIT_VIDEO);
+  TTF_Init();
 
 
   innitMatrice(jeu);
@@ -442,7 +459,7 @@ void afficheGagnant(int id_joueur){
       textureVJ3 = SDL_CreateTextureFromSurface(pRenderer, vJ3);
       vJ4 = TTF_RenderText_Solid(font, "Victoire du joueur 4!", vert);
       textureVJ4 = SDL_CreateTextureFromSurface(pRenderer, vJ4);
-      erreur = TTF_RenderText_Solid(font, "Erreur! Personne n'a gagné...", blanc);
+      erreur = TTF_RenderText_Solid(font, "Erreur! Personne n'a gagne...", blanc);
       textureErreur = SDL_CreateTextureFromSurface(pRenderer, erreur);
 
       int continuer = 1;
@@ -505,6 +522,12 @@ void afficheGagnant(int id_joueur){
       SDL_DestroyTexture(textureVJ3);
       SDL_DestroyTexture(textureVJ4);
       SDL_DestroyTexture(textureErreur);
+
+      SDL_FreeSurface(vJ1);
+      SDL_FreeSurface(vJ2);
+      SDL_FreeSurface(vJ3);
+      SDL_FreeSurface(vJ4);
+      SDL_FreeSurface(erreur);
 
       //Libération mémoire du rendu
 
@@ -676,12 +699,21 @@ int menuSolo(){
           SDL_RenderClear(pRenderer);
       }
 
+      SDL_DestroyTexture(texture);
       SDL_DestroyTexture(textureUnOrange);
       SDL_DestroyTexture(textureUnBlanc);
       SDL_DestroyTexture(textureDeuxOrange);
       SDL_DestroyTexture(textureDeuxBlanc);
       SDL_DestroyTexture(textureTroisOrange);
       SDL_DestroyTexture(textureTroisBlanc);
+
+      SDL_FreeSurface(surface);
+      SDL_FreeSurface(unOrange);
+      SDL_FreeSurface(unBlanc);
+      SDL_FreeSurface(deuxOrange);
+      SDL_FreeSurface(deuxBlanc);
+      SDL_FreeSurface(troisOrange);
+      SDL_FreeSurface(troisBlanc);
 
       //Libération mémoire du rendu
 

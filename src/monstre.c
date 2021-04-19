@@ -6,20 +6,9 @@
 #include "../lib/bombe.h"
 #include "../lib/monstre.h"
 #include "../lib/matriceBombe.h"
+#include "../lib/affichage_map.h"
 
-/**
-* \file monstre.c
-* \brief programmes concernant la gestion des monstres
-* \author Rémi Ilango Benjamin Lardais Simon Geslain Andy Haran
-* \version 1
-* \date 19 octobre 2021
-*/
 
-/**
-* \fn void effetBombeMonstre(joueur_t * j1, monstre_t * m1, monstre_t * m2, monstre_t * m3, int x, int y, int jeu[M][N])
-* \brief fonction qui applique l'effet de la bombe sur le joueur, les murs, les monstres. Un mur cassé peut laisser un bonus.
-* \param j1 représente le joueur, m1,m2,m3 représentent les monstres, x,y représentent les coordonnées de l'impact de la bombe, jeu représente la matrice
-*/
 void effetBombeMonstre(joueur_t * j1, monstre_t * m1, monstre_t * m2, monstre_t * m3, int x, int y, int jeu[M][N]){
 
   //effet de la bombe sur un joueur sur la trajectoire de la bombe
@@ -47,7 +36,6 @@ void effetBombeMonstre(joueur_t * j1, monstre_t * m1, monstre_t * m2, monstre_t 
     jeu[x][y]=0;
   }
 
-    //effet de la bombe sur un monstre sur la trajectoire de la bombe
   if(x==m1->pos_x && y==m1->pos_y){
     if(m1->vie>0){
       m1->vie--;
@@ -58,7 +46,7 @@ void effetBombeMonstre(joueur_t * j1, monstre_t * m1, monstre_t * m2, monstre_t 
       jeu[x][y]=0;
     }
   }
-  //effet de la bombe sur un monstre sur la trajectoire de la bombe
+
   if(x==m2->pos_x && y==m2->pos_y){
     if(m2->vie>0){
       m2->vie--;
@@ -69,7 +57,7 @@ void effetBombeMonstre(joueur_t * j1, monstre_t * m1, monstre_t * m2, monstre_t 
       jeu[x][y]=0;
     }
   }
-  //effet de la bombe sur un monstre sur la trajectoire de la bombe
+
   if(x==m3->pos_x && y==m3->pos_y){
     if(m3->vie>0){
       m3->vie--;
@@ -82,11 +70,6 @@ void effetBombeMonstre(joueur_t * j1, monstre_t * m1, monstre_t * m2, monstre_t 
   }
 }
 
-/**
-* \fn void DetruireMonstre(joueur_t * j1, monstre_t * m1, monstre_t * m2, monstre_t * m3, int k, int jeu[M][N])
-* \brief fonction qui détruit les monstres à l'indice de la bombe qu'utilise le joueur
-* \param j1 représente le joueur, m1,m2,m3 représentent les monstres, k, jeu représente la matrice
-*/
 
 //une bombe détruit dans les 4 directions les objets cassable (mur cassable, pouvoir au sol, joueur)
 void DetruireMonstre(joueur_t * j1, monstre_t * m1, monstre_t * m2, monstre_t * m3, int k, int jeu[M][N]){
@@ -120,12 +103,6 @@ void DetruireMonstre(joueur_t * j1, monstre_t * m1, monstre_t * m2, monstre_t * 
 
 }
 
-/**
-* \fn int checkCollisionM(joueur_t * j1, monstre_t * m, int direction, int jeu[M][N])
-* \brief
-* \param j1 représente le joueur, m représentent les monstres, direction, jeu représente la matrice
-* \return
-*/
 int checkCollisionM(joueur_t * j1, monstre_t * m, int direction, int jeu[M][N]){
   //La fonction renvoie 0 si le déplacement n'est pas possible, 1 si il l'est
   //Direction prend 0 : droite, 1 : bas, 2 : gauche, 3 : haut
@@ -286,6 +263,8 @@ void deplacerMonstre(joueur_t *j1,monstre_t *m, char direction, int jeu[M][N]){
 // la fonction retourne 0 lorsque le joueur perd et 1 quand il gagne
 int afficherMapMonstre(joueur_t j1, monstre_t m1, monstre_t m2, monstre_t m3, int jeu[M][N]) {
 
+  SDL_Color rouge = {255, 0, 0, 0};
+
   SDL_Window *win = NULL;
   SDL_Renderer *renderer = NULL;
 
@@ -297,7 +276,7 @@ int afficherMapMonstre(joueur_t j1, monstre_t m1, monstre_t m2, monstre_t m3, in
 
 
 
-  int posX = 100, posY = 100, width = 840, height = 616, w = 56, h = 56;
+  int posX = 100, posY = 100, width = 1150, height = 926, w = 56, h = 56;
   SDL_Rect rectMurI, rectMurC;
   SDL_Rect rectM1, rectM2, rectM3;
   SDL_Rect bombeJ1;
@@ -400,15 +379,15 @@ int afficherMapMonstre(joueur_t j1, monstre_t m1, monstre_t m2, monstre_t m3, in
                                 // pas de murs
             break;
             case 1:            //MurIncassable
-            rectMurI.x = w * j;
-            rectMurI.y = h * i;
+            rectMurI.x = w * j+150;
+            rectMurI.y = h * i+150;
             rectMurI.w = w;
             rectMurI.h = h;
             SDL_RenderCopy(renderer, bitmapMurI, NULL, &rectMurI);
             break;
             case 2:            //MurCassable
-            rectMurC.x = w * j;
-            rectMurC.y = h * i;
+            rectMurC.x = w * j+150;
+            rectMurC.y = h * i+150;
             rectMurC.w = w;
             rectMurC.h = h;
             SDL_RenderCopy(renderer, bitmapMurC, NULL, &rectMurC);
@@ -416,29 +395,29 @@ int afficherMapMonstre(joueur_t j1, monstre_t m1, monstre_t m2, monstre_t m3, in
             case -1:            //joueur1
             switch(j1.direction){
                 case 'N':
-                  rectJ1N.x = w * j;
-                  rectJ1N.y = h * i;
+                  rectJ1N.x = w * j+150;
+                  rectJ1N.y = h * i+150;
                   rectJ1N.w = w;
                   rectJ1N.h = h;
                   SDL_RenderCopy(renderer, bitmapJ1N, NULL, &rectJ1N);
                   break;
                 case 'E':
-                  rectJ1E.x = w * j;
-                  rectJ1E.y = h * i;
+                  rectJ1E.x = w * j+150;
+                  rectJ1E.y = h * i+150;
                   rectJ1E.w = w;
                   rectJ1E.h = h;
                   SDL_RenderCopy(renderer, bitmapJ1E, NULL, &rectJ1E);
                   break;
                 case 'S':
-                  rectJ1S.x = w * j;
-                  rectJ1S.y = h * i;
+                  rectJ1S.x = w * j+150;
+                  rectJ1S.y = h * i+150;
                   rectJ1S.w = w;
                   rectJ1S.h = h;
                   SDL_RenderCopy(renderer, bitmapJ1S, NULL, &rectJ1S);
                   break;
                 case 'W':
-                  rectJ1W.x = w * j;
-                  rectJ1W.y = h * i;
+                  rectJ1W.x = w * j+150;
+                  rectJ1W.y = h * i+150;
                   rectJ1W.w = w;
                   rectJ1W.h = h;
                   SDL_RenderCopy(renderer, bitmapJ1W, NULL, &rectJ1W);
@@ -447,57 +426,57 @@ int afficherMapMonstre(joueur_t j1, monstre_t m1, monstre_t m2, monstre_t m3, in
               break;
 
             case -5:
-            rectM1.x = w * j;
-            rectM1.y = h * i;
+            rectM1.x = w * j+150;
+            rectM1.y = h * i+150;
             rectM1.w = w;
             rectM1.h = h;
             SDL_RenderCopy(renderer, bitmapM1, NULL, &rectM1);
             break;
             case -6:
-            rectM2.x = w * j;
-            rectM2.y = h * i;
+            rectM2.x = w * j+150;
+            rectM2.y = h * i+150;
             rectM2.w = w;
             rectM2.h = h;
             SDL_RenderCopy(renderer, bitmapM2, NULL, &rectM2);
             break;
             case -7:
-            rectM3.x = w * j;
-            rectM3.y = h * i;
+            rectM3.x = w * j+150;
+            rectM3.y = h * i+150;
             rectM3.w = w;
             rectM3.h = h;
             SDL_RenderCopy(renderer, bitmapM3, NULL, &rectM3);
             break;
             case -11:
-            bombeJ1.x = w * j;
-            bombeJ1.y = h * i;
+            bombeJ1.x = w * j+150;
+            bombeJ1.y = h * i+150;
             bombeJ1.w = w;
             bombeJ1.h = h;
             SDL_RenderCopy(renderer, bitmapBombeJ1, NULL, &bombeJ1);
             break;
             case 3:
-            vitesse.x = w * j;
-            vitesse.y = h * i;
+            vitesse.x = w * j+150;
+            vitesse.y = h * i+150;
             vitesse.w = w;
             vitesse.h = h;
             SDL_RenderCopy(renderer, bitmapVitesse, NULL, &vitesse);
             break;
             case 4:
-            puissance.x = w * j;
-            puissance.y = h * i;
+            puissance.x = w * j+150;
+            puissance.y = h * i+150;
             puissance.w = w;
             puissance.h = h;
             SDL_RenderCopy(renderer, bitmapPuissance, NULL, &puissance);
             break;
             case 5:
-            plusBombe.x = w * j;
-            plusBombe.y = h * i;
+            plusBombe.x = w * j+150;
+            plusBombe.y = h * i+150;
             plusBombe.w = w;
             plusBombe.h = h;
             SDL_RenderCopy(renderer, bitmapPlusBombe, NULL, &plusBombe);
             break;
             case 6:
-            shield.x = w * j;
-            shield.y = h * i;
+            shield.x = w * j+150;
+            shield.y = h * i+150;
             shield.w = w;
             shield.h = h;
             SDL_RenderCopy(renderer, bitmapShield, NULL, &shield);
@@ -533,10 +512,9 @@ int afficherMapMonstre(joueur_t j1, monstre_t m1, monstre_t m2, monstre_t m3, in
         continuer=0;
       }
 
-
+      afficherScore(j1, &renderer, 5, 20, 160, 28, rouge);
 
       SDL_RenderPresent(renderer); //affichage de tout
-
       SDL_Delay(1000/60);
       SDL_RenderClear(renderer);
 
@@ -558,6 +536,12 @@ int afficherMapMonstre(joueur_t j1, monstre_t m1, monstre_t m2, monstre_t m3, in
   SDL_DestroyTexture(bitmapM3); // montre moyen
   SDL_DestroyTexture(bitmapM2); // monstre grand
   SDL_DestroyTexture(bitmapBombeJ1);
+
+  // Bonus
+  SDL_DestroyTexture(bitmapPlusBombe);
+  SDL_DestroyTexture(bitmapVitesse);
+  SDL_DestroyTexture(bitmapPuissance);
+  SDL_DestroyTexture(bitmapShield);
 
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(win);

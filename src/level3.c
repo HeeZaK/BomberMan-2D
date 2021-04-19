@@ -49,7 +49,6 @@ int level3(){
 
   int gagnant = afficherMapMonstre(joueur1, m1, m2, m3, jeu);
 
-  return gagnant;
 
   SDL_Quit();
 }

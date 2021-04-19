@@ -7,12 +7,102 @@
 #include "../lib/affichage_map.h"
 #include <unistd.h>
 #include <time.h>
+#include <string.h>
+
+void afficherScore(joueur_t j1, SDL_Renderer ** renderer, int x, int y, int w, int h, SDL_Color color){ ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  SDL_Surface *MMvitesse, *MMpuissance, *MMbombe, *MMshield;
+  SDL_Texture *textureMMvitesse, *textureMMpuissance, *textureMMbombe, *textureMMshield;
+  SDL_Rect rectVitesse, rectPuissance, rectBombe, rectShield;
+  TTF_Font *font = TTF_OpenFont("../assets/fonts/arial.ttf", 300);
+
+// Vitesse ///////////////////////////////////////////////////////////////
+    char nb_v[1];
+    char vitesse[16]= "Vitesse : ";
+    sprintf(nb_v,"%i", j1.vitesse);
+    strcat(vitesse, nb_v);
+
+          rectVitesse.x = x;
+          rectVitesse.y = y;
+          rectVitesse.w = w;
+          rectVitesse.h = h;
+
+      MMvitesse = TTF_RenderText_Solid(font, vitesse, color);
+      textureMMvitesse = SDL_CreateTextureFromSurface(*renderer, MMvitesse);
+      SDL_RenderCopy(*renderer, textureMMvitesse, NULL, &rectVitesse);
+      SDL_DestroyTexture(textureMMvitesse);
+      SDL_FreeSurface(MMvitesse);
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+// Puissance ///////////////////////////////////////////////////////////////
+    char nb_p[1];
+    char puissance[16]= "Puissance : ";
+    sprintf(nb_p,"%i", j1.puissance);
+    strcat(puissance, nb_p);
+
+          rectPuissance.x = x;
+          rectPuissance.y = y +30;
+          rectPuissance.w = w + 40;
+          rectPuissance.h = h;
+
+      MMpuissance = TTF_RenderText_Solid(font, puissance, color);
+      textureMMpuissance = SDL_CreateTextureFromSurface(*renderer, MMpuissance);
+      SDL_RenderCopy(*renderer, textureMMpuissance, NULL, &rectPuissance);
+      SDL_DestroyTexture(textureMMpuissance);
+      SDL_FreeSurface(MMpuissance);
+/////////////////////////////////////////////////////////////////////////////////////
+
+// Bombe ///////////////////////////////////////////////////////////////
+   char nb_b[1];
+   char bombe[16]= "Bombe : ";
+   sprintf(nb_b,"%i", j1.nb_bomb);
+   strcat(bombe, nb_b);
+
+         rectBombe.x = x;
+         rectBombe.y = y+60;
+         rectBombe.w = w;
+         rectBombe.h = h;
+
+     MMbombe = TTF_RenderText_Solid(font, bombe, color);
+     textureMMbombe = SDL_CreateTextureFromSurface(*renderer, MMbombe);
+     SDL_RenderCopy(*renderer, textureMMbombe, NULL, &rectBombe);
+     SDL_DestroyTexture(textureMMbombe);
+     SDL_FreeSurface(MMbombe);
+/////////////////////////////////////////////////////////////////////////////////////
+
+// Shield ///////////////////////////////////////////////////////////////
+  char nb_s[1];
+  char shield[16]= "Bouclier : ";
+   sprintf(nb_s,"%i", j1.vie);
+   strcat(shield, nb_s);
+
+         rectShield.x = x;
+         rectShield.y = y+90;
+         rectShield.w = w;
+         rectShield.h = h;
+
+     MMshield = TTF_RenderText_Solid(font, shield, color);
+     textureMMshield = SDL_CreateTextureFromSurface(*renderer, MMshield);
+     SDL_RenderCopy(*renderer, textureMMshield, NULL, &rectShield);
+     SDL_DestroyTexture(textureMMshield);
+     SDL_FreeSurface(MMshield);
+/////////////////////////////////////////////////////////////////////////////////////
+TTF_CloseFont(font);
+}
+
+
 
 
 joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][N]) {
 
+  SDL_Color rouge = {255, 0, 0, 0};
+  SDL_Color bleu = {0, 0, 255, 0};
+  SDL_Color jaune = {255, 255, 0, 0};
+  SDL_Color vert = {0, 128, 0, 0};
   SDL_Window *win = NULL;
   SDL_Renderer *renderer = NULL;
+
 
   SDL_Texture *bitmapFond, *bitmapMurI, *bitmapMurC;
   SDL_Texture *bitmapJ1N, *bitmapJ1E, *bitmapJ1S, *bitmapJ1W;
@@ -22,7 +112,7 @@ joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int j
   SDL_Texture *bitmapBombeJ1, *bitmapBombeJ2, *bitmapBombeJ3, *bitmapBombeJ4;
   SDL_Texture *bitmapPlusBombe, *bitmapVitesse, *bitmapPuissance, *bitmapShield;
 
-  int posX = 100, posY = 100, width = 840, height = 616, w = 56, h = 56;
+  int posX = 100, posY = 100, width = 1150, height = 926, w = 56, h = 56;
   SDL_Rect rectMurI, rectMurC;
   SDL_Rect rectJ1N, rectJ1E, rectJ1S, rectJ1W;
   SDL_Rect rectJ2N, rectJ2E, rectJ2S, rectJ2W;
@@ -31,7 +121,11 @@ joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int j
   SDL_Rect bombeJ1, bombeJ2, bombeJ3, bombeJ4;
   SDL_Rect plusBombe, vitesse, puissance, shield;
 
+
+
+
   joueur_t * gagnant=NULL;
+
 
   win = SDL_CreateWindow("(= BomberMan =)", posX, posY, width, height, 0);
   renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
@@ -79,7 +173,6 @@ joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int j
   bitmapPuissance = IMG_LoadTexture(renderer, "../assets/powerups/puissance.png");   //PV puissance augmenté
   bitmapShield = IMG_LoadTexture(renderer, "../assets/powerups/shield.png");   //PV bouclier
   //
-
 
 
     SDL_Event event;
@@ -273,15 +366,15 @@ joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int j
                                 // pas de murs
             break;
             case 1:            //MurIncassable
-            rectMurI.x = w * j;
-            rectMurI.y = h * i;
+            rectMurI.x = w * j+150;
+            rectMurI.y = h * i+150;
             rectMurI.w = w;
             rectMurI.h = h;
             SDL_RenderCopy(renderer, bitmapMurI, NULL, &rectMurI);
             break;
             case 2:            //MurCassable
-            rectMurC.x = w * j;
-            rectMurC.y = h * i;
+            rectMurC.x = w * j+150;
+            rectMurC.y = h * i+150;
             rectMurC.w = w;
             rectMurC.h = h;
             SDL_RenderCopy(renderer, bitmapMurC, NULL, &rectMurC);
@@ -289,29 +382,29 @@ joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int j
             case -1:            //joueur1
               switch(j1.direction){
                 case 'N':
-                  rectJ1N.x = w * j;
-                  rectJ1N.y = h * i;
+                  rectJ1N.x = w * j+150;
+                  rectJ1N.y = h * i+150;
                   rectJ1N.w = w;
                   rectJ1N.h = h;
                   SDL_RenderCopy(renderer, bitmapJ1N, NULL, &rectJ1N);
                   break;
                 case 'E':
-                  rectJ1E.x = w * j;
-                  rectJ1E.y = h * i;
+                  rectJ1E.x = w * j+150;
+                  rectJ1E.y = h * i+150;
                   rectJ1E.w = w;
                   rectJ1E.h = h;
                   SDL_RenderCopy(renderer, bitmapJ1E, NULL, &rectJ1E);
                   break;
                 case 'S':
-                  rectJ1S.x = w * j;
-                  rectJ1S.y = h * i;
+                  rectJ1S.x = w * j+150;
+                  rectJ1S.y = h * i+150;
                   rectJ1S.w = w;
                   rectJ1S.h = h;
                   SDL_RenderCopy(renderer, bitmapJ1S, NULL, &rectJ1S);
                   break;
                 case 'W':
-                  rectJ1W.x = w * j;
-                  rectJ1W.y = h * i;
+                  rectJ1W.x = w * j+150;
+                  rectJ1W.y = h * i+150;
                   rectJ1W.w = w;
                   rectJ1W.h = h;
                   SDL_RenderCopy(renderer, bitmapJ1W, NULL, &rectJ1W);
@@ -321,29 +414,29 @@ joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int j
             case -2:             //joueur2
               switch(j2.direction){
                 case 'N':
-                  rectJ2N.x = w * j;
-                  rectJ2N.y = h * i;
+                  rectJ2N.x = w * j+150;
+                  rectJ2N.y = h * i+150;
                   rectJ2N.w = w;
                   rectJ2N.h = h;
                   SDL_RenderCopy(renderer, bitmapJ2N, NULL, &rectJ2N);
                   break;
                 case 'E':
-                  rectJ2E.x = w * j;
-                  rectJ2E.y = h * i;
+                  rectJ2E.x = w * j+150;
+                  rectJ2E.y = h * i+150;
                   rectJ2E.w = w;
                   rectJ2E.h = h;
                   SDL_RenderCopy(renderer, bitmapJ2E, NULL, &rectJ2E);
                   break;
                 case 'S':
-                  rectJ2S.x = w * j;
-                  rectJ2S.y = h * i;
+                  rectJ2S.x = w * j+150;
+                  rectJ2S.y = h * i+150;
                   rectJ2S.w = w;
                   rectJ2S.h = h;
                   SDL_RenderCopy(renderer, bitmapJ2S, NULL, &rectJ2S);
                   break;
                 case 'W':
-                  rectJ2W.x = w * j;
-                  rectJ2W.y = h * i;
+                  rectJ2W.x = w * j+150;
+                  rectJ2W.y = h * i+150;
                   rectJ2W.w = w;
                   rectJ2W.h = h;
                   SDL_RenderCopy(renderer, bitmapJ2W, NULL, &rectJ2W);
@@ -353,29 +446,29 @@ joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int j
             case -3:              //joueur3
               switch(j3.direction){
                 case 'N':
-                  rectJ3N.x = w * j;
-                  rectJ3N.y = h * i;
+                  rectJ3N.x = w * j+150;
+                  rectJ3N.y = h * i+150;
                   rectJ3N.w = w;
                   rectJ3N.h = h;
                   SDL_RenderCopy(renderer, bitmapJ3N, NULL, &rectJ3N);
                   break;
                 case 'E':
-                  rectJ3E.x = w * j;
-                  rectJ3E.y = h * i;
+                  rectJ3E.x = w * j+150;
+                  rectJ3E.y = h * i+150;
                   rectJ3E.w = w;
                   rectJ3E.h = h;
                   SDL_RenderCopy(renderer, bitmapJ3E, NULL, &rectJ3E);
                   break;
                 case 'S':
-                  rectJ3S.x = w * j;
-                  rectJ3S.y = h * i;
+                  rectJ3S.x = w * j+150;
+                  rectJ3S.y = h * i+150;
                   rectJ3S.w = w;
                   rectJ3S.h = h;
                   SDL_RenderCopy(renderer, bitmapJ3S, NULL, &rectJ3S);
                   break;
                 case 'W':
-                  rectJ3W.x = w * j;
-                  rectJ3W.y = h * i;
+                  rectJ3W.x = w * j+150;
+                  rectJ3W.y = h * i+150;
                   rectJ3W.w = w;
                   rectJ3W.h = h;
                   SDL_RenderCopy(renderer, bitmapJ3W, NULL, &rectJ3W);
@@ -385,29 +478,29 @@ joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int j
             case -4:                //joueur4
               switch(j4.direction){
                 case 'N':
-                  rectJ4N.x = w * j;
-                  rectJ4N.y = h * i;
+                  rectJ4N.x = w * j+150;
+                  rectJ4N.y = h * i+150;
                   rectJ4N.w = w;
                   rectJ4N.h = h;
                   SDL_RenderCopy(renderer, bitmapJ4N, NULL, &rectJ4N);
                   break;
                 case 'E':
-                  rectJ4E.x = w * j;
-                  rectJ4E.y = h * i;
+                  rectJ4E.x = w * j+150;
+                  rectJ4E.y = h * i+150;
                   rectJ4E.w = w;
                   rectJ4E.h = h;
                   SDL_RenderCopy(renderer, bitmapJ4E, NULL, &rectJ4E);
                   break;
                 case 'S':
-                  rectJ4S.x = w * j;
-                  rectJ4S.y = h * i;
+                  rectJ4S.x = w * j+150;
+                  rectJ4S.y = h * i+150;
                   rectJ4S.w = w;
                   rectJ4S.h = h;
                   SDL_RenderCopy(renderer, bitmapJ4S, NULL, &rectJ4S);
                   break;
                 case 'W':
-                  rectJ4W.x = w * j;
-                  rectJ4W.y = h * i;
+                  rectJ4W.x = w * j+150;
+                  rectJ4W.y = h * i+150;
                   rectJ4W.w = w;
                   rectJ4W.h = h;
                   SDL_RenderCopy(renderer, bitmapJ4W, NULL, &rectJ4W);
@@ -415,57 +508,57 @@ joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int j
               }
             break;
             case -11:
-            bombeJ1.x = w * j;
-            bombeJ1.y = h * i;
+            bombeJ1.x = w * j+150;
+            bombeJ1.y = h * i+150;
             bombeJ1.w = w;
             bombeJ1.h = h;
             SDL_RenderCopy(renderer, bitmapBombeJ1, NULL, &bombeJ1);
             break;
             case -12:
-            bombeJ2.x = w * j;
-            bombeJ2.y = h * i;
+            bombeJ2.x = w * j+150;
+            bombeJ2.y = h * i+150;
             bombeJ2.w = w;
             bombeJ2.h = h;
             SDL_RenderCopy(renderer, bitmapBombeJ2, NULL, &bombeJ2);
             break;
             case -13:
-            bombeJ3.x = w * j;
-            bombeJ3.y = h * i;
+            bombeJ3.x = w * j+150;
+            bombeJ3.y = h * i+150;
             bombeJ3.w = w;
             bombeJ3.h = h;
             SDL_RenderCopy(renderer, bitmapBombeJ3, NULL, &bombeJ3);
             break;
             case -14:
-            bombeJ4.x = w * j;
-            bombeJ4.y = h * i;
+            bombeJ4.x = w * j+150;
+            bombeJ4.y = h * i+150;
             bombeJ4.w = w;
             bombeJ4.h = h;
             SDL_RenderCopy(renderer, bitmapBombeJ4, NULL, &bombeJ4);
             break;
             case 3:
-            vitesse.x = w * j;
-            vitesse.y = h * i;
+            vitesse.x = w * j+150;
+            vitesse.y = h * i+150;
             vitesse.w = w;
             vitesse.h = h;
             SDL_RenderCopy(renderer, bitmapVitesse, NULL, &vitesse);
             break;
             case 4:
-            puissance.x = w * j;
-            puissance.y = h * i;
+            puissance.x = w * j+150;
+            puissance.y = h * i+150;
             puissance.w = w;
             puissance.h = h;
             SDL_RenderCopy(renderer, bitmapPuissance, NULL, &puissance);
             break;
             case 5:
-            plusBombe.x = w * j;
-            plusBombe.y = h * i;
+            plusBombe.x = w * j+150;
+            plusBombe.y = h * i+150;
             plusBombe.w = w;
             plusBombe.h = h;
             SDL_RenderCopy(renderer, bitmapPlusBombe, NULL, &plusBombe);
             break;
             case 6:
-            shield.x = w * j;
-            shield.y = h * i;
+            shield.x = w * j+150;
+            shield.y = h * i+150;
             shield.w = w;
             shield.h = h;
             SDL_RenderCopy(renderer, bitmapShield, NULL, &shield);
@@ -474,9 +567,17 @@ joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int j
         }
       }
 
+
+ afficherScore(j1, &renderer, 5, 20, 160, 28, rouge);
+ afficherScore(j2, &renderer, 942, 800, 160, 28, bleu);
+ afficherScore(j3, &renderer, 5, 800, 160, 28, jaune);
+ afficherScore(j4, &renderer, 942, 20, 160, 28, vert);
+
+
       SDL_RenderPresent(renderer); //affichage de tout
       SDL_Delay(1000/60);
       SDL_RenderClear(renderer);
+
 
   }
 
@@ -507,10 +608,21 @@ joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int j
   SDL_DestroyTexture(bitmapJ4S);
   SDL_DestroyTexture(bitmapJ4W);
 
+  // bombes joueurs
   SDL_DestroyTexture(bitmapBombeJ1);
   SDL_DestroyTexture(bitmapBombeJ2);
   SDL_DestroyTexture(bitmapBombeJ3);
   SDL_DestroyTexture(bitmapBombeJ4);
+
+  // Bonus
+  SDL_DestroyTexture(bitmapPlusBombe);
+  SDL_DestroyTexture(bitmapVitesse);
+  SDL_DestroyTexture(bitmapPuissance);
+  SDL_DestroyTexture(bitmapShield);
+
+
+
+
 
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(win);

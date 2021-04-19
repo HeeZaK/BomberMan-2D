@@ -6,6 +6,7 @@
 #include "../lib/menu.h"
 #include <unistd.h>
 #include <time.h>
+#include "../lib/level.h"
 
 
 int main(int argc, char ** argv){
@@ -25,7 +26,7 @@ int main(int argc, char ** argv){
   else if(valMenu==2){
     //Mode solo
     int num_niv = menuSolo();
-    /*if(num_niv==1){
+    if(num_niv==1){
       level1();
     }
     else if(num_niv==2){
@@ -33,7 +34,7 @@ int main(int argc, char ** argv){
     }
     else if(num_niv==3){
       level3();
-    }*/
+    }
   }
   else{
     //Exit

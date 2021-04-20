@@ -8,7 +8,7 @@ Faites Bomberman2D.exe
 
 Si toute fois votre compilation ne marche pas avec les fichiers de github téléchargez les fichiers
 sur google drive avec ce lien et compiler le sur windows avec mingw32 :  
-https://drive.google.com/file/d/1PF4wq_H7boUYM1NXyn7oz0P_hJA6zz32/view?usp=sharing
+https://drive.google.com/file/d/1JuA6Ap8K2_zclZZZrU4Zag9MKVcr3FS3/view?usp=sharing
 
 
 Voici toutes les commandes à connaitre pour chacun des joueurs

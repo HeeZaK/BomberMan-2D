@@ -1,0 +1,96 @@
+\hypertarget{affichage__map_8c}{}\doxysection{Référence du fichier affichage\+\_\+map.\+c}
+\label{affichage__map_8c}\index{affichage\_map.c@{affichage\_map.c}}
+
+
+Ce fichier contient les deux fonctions nécessaires pour l\textquotesingle{}affichage de la carte de jeu avec les pouvoirs des joueurs qu\textquotesingle{}ils ont. C\textquotesingle{}est aussi un fichier qui permet d\textquotesingle{}actualiser la carte et le score avec les interactions sur la matrice.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../lib/bombe.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../lib/affichage\+\_\+map.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Graphe des dépendances par inclusion de affichage\+\_\+map.\+c\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{affichage__map_8c_abefec424c41f00cc046ac393dc4012c9}{afficher\+Score}} (joueur\+\_\+t j1, S\+D\+L\+\_\+\+Renderer $\ast$$\ast$renderer, int x, int y, int w, int h, S\+D\+L\+\_\+\+Color color)
+\begin{DoxyCompactList}\small\item\em fonction qui permet d\textquotesingle{}afficher le score. Affiche les points de vitesses, de puissances, le nombre de bombe, et si le joueur possède un bouclier ou non. \end{DoxyCompactList}\item 
+joueur\+\_\+t $\ast$ \mbox{\hyperlink{affichage__map_8c_af69978a4bd283687a870d814561ec309}{afficher\+Map}} (joueur\+\_\+t j1, joueur\+\_\+t j2, joueur\+\_\+t j3, joueur\+\_\+t j4, int jeu\mbox{[}M\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em fonction qui permet d\textquotesingle{}afficher la matrice avec les joueurs et les pouvoirs \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Ce fichier contient les deux fonctions nécessaires pour l\textquotesingle{}affichage de la carte de jeu avec les pouvoirs des joueurs qu\textquotesingle{}ils ont. C\textquotesingle{}est aussi un fichier qui permet d\textquotesingle{}actualiser la carte et le score avec les interactions sur la matrice. 
+
+\begin{DoxyAuthor}{Auteur}
+Ilango Rémi, Lardais Benjamin, Geslain Simon, Haran Andy 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+19 avril 2021 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{affichage__map_8c_af69978a4bd283687a870d814561ec309}\label{affichage__map_8c_af69978a4bd283687a870d814561ec309}} 
+\index{affichage\_map.c@{affichage\_map.c}!afficherMap@{afficherMap}}
+\index{afficherMap@{afficherMap}!affichage\_map.c@{affichage\_map.c}}
+\doxysubsubsection{\texorpdfstring{afficherMap()}{afficherMap()}}
+{\footnotesize\ttfamily joueur\+\_\+t $\ast$ afficher\+Map (\begin{DoxyParamCaption}\item[{joueur\+\_\+t}]{j1,  }\item[{joueur\+\_\+t}]{j2,  }\item[{joueur\+\_\+t}]{j3,  }\item[{joueur\+\_\+t}]{j4,  }\item[{int}]{jeu\mbox{[}\+M\mbox{]}\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+fonction qui permet d\textquotesingle{}afficher la matrice avec les joueurs et les pouvoirs 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j1} & représente le joueur 1 \\
+\hline
+{\em j2} & représente le joueur 2 \\
+\hline
+{\em j3} & représente le joueur 3 \\
+\hline
+{\em j4} & représente le joueur 4 \\
+\hline
+{\em jeu} & représente la matrice. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne le joueur qui a gagné 
+\end{DoxyReturn}
+\mbox{\Hypertarget{affichage__map_8c_abefec424c41f00cc046ac393dc4012c9}\label{affichage__map_8c_abefec424c41f00cc046ac393dc4012c9}} 
+\index{affichage\_map.c@{affichage\_map.c}!afficherScore@{afficherScore}}
+\index{afficherScore@{afficherScore}!affichage\_map.c@{affichage\_map.c}}
+\doxysubsubsection{\texorpdfstring{afficherScore()}{afficherScore()}}
+{\footnotesize\ttfamily void afficher\+Score (\begin{DoxyParamCaption}\item[{joueur\+\_\+t}]{j1,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$$\ast$}]{renderer,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{S\+D\+L\+\_\+\+Color}]{color }\end{DoxyParamCaption})}
+
+
+
+fonction qui permet d\textquotesingle{}afficher le score. Affiche les points de vitesses, de puissances, le nombre de bombe, et si le joueur possède un bouclier ou non. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j1} & représente le joueur 1 \\
+\hline
+{\em renderer} & représente l\textquotesingle{}espace où l\textquotesingle{}on peut écrire \\
+\hline
+{\em x} & représente la ligne dans la matrice \\
+\hline
+{\em y} & représente la colonne dans la matrice \\
+\hline
+{\em w} & représente la largeur de l\textquotesingle{}objet affiché \\
+\hline
+{\em h} & représente la hauteur de l\textquotesingle{}objet affiché \\
+\hline
+{\em color} & représente la couleur que l\textquotesingle{}on veut afficher \\
+\hline
+\end{DoxyParams}

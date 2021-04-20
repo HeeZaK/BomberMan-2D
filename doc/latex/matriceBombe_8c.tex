@@ -1,0 +1,104 @@
+\hypertarget{matriceBombe_8c}{}\doxysection{Référence du fichier matrice\+Bombe.\+c}
+\label{matriceBombe_8c}\index{matriceBombe.c@{matriceBombe.c}}
+
+
+fonctions concernant la gestion de la matrice  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../lib/matrice\+Bombe.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+Graphe des dépendances par inclusion de matrice\+Bombe.\+c\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{matriceBombe_8c_ad70c67b9908558b68a4c5b418f0fe326}{innit\+Matrice}} (int jeu\mbox{[}M\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em fonction qui vide la matrice en mettant chaque case à 0 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{matriceBombe_8c_a694f1bd4e2335bcb9e0df42b30d0ac34}{placer\+Mur\+Incassable}} (int jeu\mbox{[}M\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em fonction qui place les murs incassables \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{matriceBombe_8c_ac859523ef93a599eee8c248713387872}{placer\+Mur\+Cassable}} (int jeu\mbox{[}M\mbox{]}\mbox{[}N\mbox{]}, int proba)
+\begin{DoxyCompactList}\small\item\em fonction qui place les murs cassables. Mur cassable=2 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{matriceBombe_8c_ae19b7284a41913f4d0285feb0a67467a}{afficher\+Matrice}} (int jeu\mbox{[}M\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em fonction qui affiche la matrice dans le terminal \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+fonctions concernant la gestion de la matrice 
+
+\begin{DoxyAuthor}{Auteur}
+Ilango Rémi, Lardais Benjamin, Geslain Simon, Haran Andy 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+19 octobre 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{matriceBombe_8c_ae19b7284a41913f4d0285feb0a67467a}\label{matriceBombe_8c_ae19b7284a41913f4d0285feb0a67467a}} 
+\index{matriceBombe.c@{matriceBombe.c}!afficherMatrice@{afficherMatrice}}
+\index{afficherMatrice@{afficherMatrice}!matriceBombe.c@{matriceBombe.c}}
+\doxysubsubsection{\texorpdfstring{afficherMatrice()}{afficherMatrice()}}
+{\footnotesize\ttfamily void afficher\+Matrice (\begin{DoxyParamCaption}\item[{int}]{jeu\mbox{[}\+M\mbox{]}\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+fonction qui affiche la matrice dans le terminal 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em jeu} & représente la matrice \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{matriceBombe_8c_ad70c67b9908558b68a4c5b418f0fe326}\label{matriceBombe_8c_ad70c67b9908558b68a4c5b418f0fe326}} 
+\index{matriceBombe.c@{matriceBombe.c}!innitMatrice@{innitMatrice}}
+\index{innitMatrice@{innitMatrice}!matriceBombe.c@{matriceBombe.c}}
+\doxysubsubsection{\texorpdfstring{innitMatrice()}{innitMatrice()}}
+{\footnotesize\ttfamily void innit\+Matrice (\begin{DoxyParamCaption}\item[{int}]{jeu\mbox{[}\+M\mbox{]}\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+fonction qui vide la matrice en mettant chaque case à 0 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em jeu} & représente la matrice \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{matriceBombe_8c_ac859523ef93a599eee8c248713387872}\label{matriceBombe_8c_ac859523ef93a599eee8c248713387872}} 
+\index{matriceBombe.c@{matriceBombe.c}!placerMurCassable@{placerMurCassable}}
+\index{placerMurCassable@{placerMurCassable}!matriceBombe.c@{matriceBombe.c}}
+\doxysubsubsection{\texorpdfstring{placerMurCassable()}{placerMurCassable()}}
+{\footnotesize\ttfamily void placer\+Mur\+Cassable (\begin{DoxyParamCaption}\item[{int}]{jeu\mbox{[}\+M\mbox{]}\mbox{[}\+N\mbox{]},  }\item[{int}]{proba }\end{DoxyParamCaption})}
+
+
+
+fonction qui place les murs cassables. Mur cassable=2 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em jeu} & représente la matrice \\
+\hline
+{\em proba} & représente la probabilité qu\textquotesingle{}un mur placé soit cassable \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{matriceBombe_8c_a694f1bd4e2335bcb9e0df42b30d0ac34}\label{matriceBombe_8c_a694f1bd4e2335bcb9e0df42b30d0ac34}} 
+\index{matriceBombe.c@{matriceBombe.c}!placerMurIncassable@{placerMurIncassable}}
+\index{placerMurIncassable@{placerMurIncassable}!matriceBombe.c@{matriceBombe.c}}
+\doxysubsubsection{\texorpdfstring{placerMurIncassable()}{placerMurIncassable()}}
+{\footnotesize\ttfamily void placer\+Mur\+Incassable (\begin{DoxyParamCaption}\item[{int}]{jeu\mbox{[}\+M\mbox{]}\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+fonction qui place les murs incassables 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em jeu} & représente la matrice \\
+\hline
+\end{DoxyParams}

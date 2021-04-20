@@ -1,0 +1,119 @@
+\hypertarget{menu_8c}{}\doxysection{Référence du fichier menu.\+c}
+\label{menu_8c}\index{menu.c@{menu.c}}
+
+
+Ce fichier regroupe les différents menus qui permet de choisir les options que nous voulons. Il y a aussi tous les affichages textes qui ne sont pas sur la carte de jeu.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../lib/bombe.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../lib/affichage\+\_\+map.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../lib/menu.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de menu.\+c\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{menu_8c_ae83fcdbeb2b6757fc741ae953b633ee1}{menu}} ()
+\begin{DoxyCompactList}\small\item\em Cette fonction affiche un menu qui propose trois choix, le mode multijoueur, le mode ou exit pour quitter. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu_8c_a3fe3fa2e85a41205e6dabc399e8e13cd}{menu\+Multijoueur}} ()
+\begin{DoxyCompactList}\small\item\em Cette fonction affiche un menu qui propose trois choix pour le nombre de joueur, 2, 3 ou 4. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu_8c_aa4bb6d8164a5727f6435e911938aaf09}{lancer\+Partie\+Multi}} (int nb\+\_\+joueur)
+\begin{DoxyCompactList}\small\item\em Cette fonction lance une partie en mutlijoueur local en fonction du nombre de joueur sélectionné dans le menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8c_a86864d1187230fe71a0eb8764bc0485b}{affiche\+Gagnant}} (int id\+\_\+joueur)
+\begin{DoxyCompactList}\small\item\em Cette fonction affiche le gagnant à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu_8c_ad28a0028c7049f36dd1f755120a6239e}{menu\+Solo}} ()
+\begin{DoxyCompactList}\small\item\em Cette fonction affiche un menu qui propose trois choix pour le niveau contre les monstres, 1, 2 ou 3. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Ce fichier regroupe les différents menus qui permet de choisir les options que nous voulons. Il y a aussi tous les affichages textes qui ne sont pas sur la carte de jeu. 
+
+\begin{DoxyAuthor}{Auteur}
+Ilango Rémi, Lardais Benjamin, Geslain Simon, Haran Andy 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+19 avril 2021 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{menu_8c_a86864d1187230fe71a0eb8764bc0485b}\label{menu_8c_a86864d1187230fe71a0eb8764bc0485b}} 
+\index{menu.c@{menu.c}!afficheGagnant@{afficheGagnant}}
+\index{afficheGagnant@{afficheGagnant}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{afficheGagnant()}{afficheGagnant()}}
+{\footnotesize\ttfamily void affiche\+Gagnant (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+joueur }\end{DoxyParamCaption})}
+
+
+
+Cette fonction affiche le gagnant à l\textquotesingle{}écran. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em int} & id\+\_\+joueur, identifiant du joueur qui a gagné la partie \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{menu_8c_aa4bb6d8164a5727f6435e911938aaf09}\label{menu_8c_aa4bb6d8164a5727f6435e911938aaf09}} 
+\index{menu.c@{menu.c}!lancerPartieMulti@{lancerPartieMulti}}
+\index{lancerPartieMulti@{lancerPartieMulti}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{lancerPartieMulti()}{lancerPartieMulti()}}
+{\footnotesize\ttfamily int lancer\+Partie\+Multi (\begin{DoxyParamCaption}\item[{int}]{nb\+\_\+joueur }\end{DoxyParamCaption})}
+
+
+
+Cette fonction lance une partie en mutlijoueur local en fonction du nombre de joueur sélectionné dans le menu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em int} & nb\+\_\+joueur correspond au nombre de joueur qui joue \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+L\textquotesingle{}identifiant du gagnant qui a réussi à éliminer tout ses adversaires. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{menu_8c_ae83fcdbeb2b6757fc741ae953b633ee1}\label{menu_8c_ae83fcdbeb2b6757fc741ae953b633ee1}} 
+\index{menu.c@{menu.c}!menu@{menu}}
+\index{menu@{menu}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{menu()}{menu()}}
+{\footnotesize\ttfamily int menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Cette fonction affiche un menu qui propose trois choix, le mode multijoueur, le mode ou exit pour quitter. 
+
+\begin{DoxyReturn}{Renvoie}
+Une valeur comprise entre 1 et 3 qui correspond au mode choisit et -\/1 si l\textquotesingle{}utilisateur décide de fermer la fenêtre. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{menu_8c_a3fe3fa2e85a41205e6dabc399e8e13cd}\label{menu_8c_a3fe3fa2e85a41205e6dabc399e8e13cd}} 
+\index{menu.c@{menu.c}!menuMultijoueur@{menuMultijoueur}}
+\index{menuMultijoueur@{menuMultijoueur}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{menuMultijoueur()}{menuMultijoueur()}}
+{\footnotesize\ttfamily int menu\+Multijoueur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Cette fonction affiche un menu qui propose trois choix pour le nombre de joueur, 2, 3 ou 4. 
+
+\begin{DoxyReturn}{Renvoie}
+Une valeur comprise entre 2 et 4 qui correspond au mode choisit et -\/1 si l\textquotesingle{}utilisateur décide de fermer la fenêtre. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{menu_8c_ad28a0028c7049f36dd1f755120a6239e}\label{menu_8c_ad28a0028c7049f36dd1f755120a6239e}} 
+\index{menu.c@{menu.c}!menuSolo@{menuSolo}}
+\index{menuSolo@{menuSolo}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{menuSolo()}{menuSolo()}}
+{\footnotesize\ttfamily int menu\+Solo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Cette fonction affiche un menu qui propose trois choix pour le niveau contre les monstres, 1, 2 ou 3. 
+
+\begin{DoxyReturn}{Renvoie}
+Une valeur comprise entre 1 et 3 qui correspond au niveau choisit et -\/1 si l\textquotesingle{}utilisateur décide de fermer la fenêtre. 
+\end{DoxyReturn}

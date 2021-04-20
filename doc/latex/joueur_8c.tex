@@ -1,0 +1,146 @@
+\hypertarget{joueur_8c}{}\doxysection{Référence du fichier joueur.\+c}
+\label{joueur_8c}\index{joueur.c@{joueur.c}}
+
+
+fonctions concernant la gestion des joueurs  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../lib/joueur.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de joueur.\+c\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{joueur_8c_aead3741d771d7768dd25bfc81066508f}{effet\+Pouvoir}} (joueur\+\_\+t $\ast$j, int x, int y, int jeu\mbox{[}M\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em fonction qui applique les effets des pouvoirs sur les joueurs \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{joueur_8c_a20bad87daca5d50e18707292ff8db7ba}{check\+Collision}} (joueur\+\_\+t $\ast$j, int direction, int jeu\mbox{[}M\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em fonction qui vérifie si le joueur peut se déplacer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{joueur_8c_a622b09eba5045b07f462293ee1bdeb98}{changer\+Rota\+Joueur}} (joueur\+\_\+t $\ast$j)
+\begin{DoxyCompactList}\small\item\em fonction qui change la direction dans laquelle regarde le joueur \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{joueur_8c_a512d097d633e2ea623d21e48cf7ce964}{deplacerJ}} (joueur\+\_\+t $\ast$j, int direction, int jeu\mbox{[}M\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em fonction qui déplace le joueur en fonction de sa direction \end{DoxyCompactList}\item 
+joueur\+\_\+t $\ast$ \mbox{\hyperlink{joueur_8c_a37db1c8601de50ebb6912d661367eab1}{verif\+Gagnant}} (joueur\+\_\+t $\ast$j1, joueur\+\_\+t $\ast$j2, joueur\+\_\+t $\ast$j3, joueur\+\_\+t $\ast$j4, int jeu\mbox{[}M\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em fonction qui vérifie qui a gagné parmi les joueurs \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+fonctions concernant la gestion des joueurs 
+
+\begin{DoxyAuthor}{Auteur}
+Ilango Rémi, Lardais Benjamin, Geslain Simon, Haran Andy 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+19 avril 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{joueur_8c_a622b09eba5045b07f462293ee1bdeb98}\label{joueur_8c_a622b09eba5045b07f462293ee1bdeb98}} 
+\index{joueur.c@{joueur.c}!changerRotaJoueur@{changerRotaJoueur}}
+\index{changerRotaJoueur@{changerRotaJoueur}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{changerRotaJoueur()}{changerRotaJoueur()}}
+{\footnotesize\ttfamily void changer\+Rota\+Joueur (\begin{DoxyParamCaption}\item[{joueur\+\_\+t $\ast$}]{j }\end{DoxyParamCaption})}
+
+
+
+fonction qui change la direction dans laquelle regarde le joueur 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & représente le joueur \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{joueur_8c_a20bad87daca5d50e18707292ff8db7ba}\label{joueur_8c_a20bad87daca5d50e18707292ff8db7ba}} 
+\index{joueur.c@{joueur.c}!checkCollision@{checkCollision}}
+\index{checkCollision@{checkCollision}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{checkCollision()}{checkCollision()}}
+{\footnotesize\ttfamily int check\+Collision (\begin{DoxyParamCaption}\item[{joueur\+\_\+t $\ast$}]{j,  }\item[{int}]{direction,  }\item[{int}]{jeu\mbox{[}\+M\mbox{]}\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+fonction qui vérifie si le joueur peut se déplacer 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & représente le joueur \\
+\hline
+{\em direction} & représente la direction dans laquelle regarde le joueur \\
+\hline
+{\em jeu} & représente la matrice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne 0 si le déplacement n\textquotesingle{}est pas possible, 1 si il l\textquotesingle{}est 
+\end{DoxyReturn}
+\mbox{\Hypertarget{joueur_8c_a512d097d633e2ea623d21e48cf7ce964}\label{joueur_8c_a512d097d633e2ea623d21e48cf7ce964}} 
+\index{joueur.c@{joueur.c}!deplacerJ@{deplacerJ}}
+\index{deplacerJ@{deplacerJ}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{deplacerJ()}{deplacerJ()}}
+{\footnotesize\ttfamily void deplacerJ (\begin{DoxyParamCaption}\item[{joueur\+\_\+t $\ast$}]{j,  }\item[{int}]{direction,  }\item[{int}]{jeu\mbox{[}\+M\mbox{]}\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+fonction qui déplace le joueur en fonction de sa direction 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & représente le joueur \\
+\hline
+{\em direction} & représente la direction dans laquelle regarde le joueur \\
+\hline
+{\em jeu} & représente la matrice \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{joueur_8c_aead3741d771d7768dd25bfc81066508f}\label{joueur_8c_aead3741d771d7768dd25bfc81066508f}} 
+\index{joueur.c@{joueur.c}!effetPouvoir@{effetPouvoir}}
+\index{effetPouvoir@{effetPouvoir}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{effetPouvoir()}{effetPouvoir()}}
+{\footnotesize\ttfamily void effet\+Pouvoir (\begin{DoxyParamCaption}\item[{joueur\+\_\+t $\ast$}]{j,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{jeu\mbox{[}\+M\mbox{]}\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+fonction qui applique les effets des pouvoirs sur les joueurs 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & représente le joueur, \\
+\hline
+{\em x} & représente la ligne dans la matrice \\
+\hline
+{\em y} & représente la colonne dans la matrice \\
+\hline
+{\em jeu} & représente la matrice \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{joueur_8c_a37db1c8601de50ebb6912d661367eab1}\label{joueur_8c_a37db1c8601de50ebb6912d661367eab1}} 
+\index{joueur.c@{joueur.c}!verifGagnant@{verifGagnant}}
+\index{verifGagnant@{verifGagnant}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{verifGagnant()}{verifGagnant()}}
+{\footnotesize\ttfamily joueur\+\_\+t $\ast$ verif\+Gagnant (\begin{DoxyParamCaption}\item[{joueur\+\_\+t $\ast$}]{j1,  }\item[{joueur\+\_\+t $\ast$}]{j2,  }\item[{joueur\+\_\+t $\ast$}]{j3,  }\item[{joueur\+\_\+t $\ast$}]{j4,  }\item[{int}]{jeu\mbox{[}\+M\mbox{]}\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+fonction qui vérifie qui a gagné parmi les joueurs 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j1} & représente le joueur 1 \\
+\hline
+{\em j2} & représente le joueur 2 \\
+\hline
+{\em j3} & représente le joueur 3 \\
+\hline
+{\em j4} & représente le joueur 4 \\
+\hline
+{\em jeu} & représente la matrice. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne le gagnant 
+\end{DoxyReturn}

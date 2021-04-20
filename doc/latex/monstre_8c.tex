@@ -1,0 +1,171 @@
+\hypertarget{monstre_8c}{}\doxysection{Référence du fichier monstre.\+c}
+\label{monstre_8c}\index{monstre.c@{monstre.c}}
+
+
+fonctions concernant la gestion des monstres  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../lib/bombe.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../lib/monstre.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../lib/matrice\+Bombe.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../lib/affichage\+\_\+map.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de monstre.\+c\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{monstre_8c_a9c02705edbc2e698a448c4fa13d1c684}{effet\+Bombe\+Monstre}} (joueur\+\_\+t $\ast$j1, monstre\+\_\+t $\ast$m1, monstre\+\_\+t $\ast$m2, monstre\+\_\+t $\ast$m3, int x, int y, int jeu\mbox{[}M\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em fonction qui applique l\textquotesingle{}effet de la bombe sur le joueur, les murs, les monstres. Un mur cassé peut laisser un bonus. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{monstre_8c_ac19da0e946516065c3b5e65ac285ea2f}{Detruire\+Monstre}} (joueur\+\_\+t $\ast$j1, monstre\+\_\+t $\ast$m1, monstre\+\_\+t $\ast$m2, monstre\+\_\+t $\ast$m3, int k, int jeu\mbox{[}M\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em fonction qui détruit les monstres \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{monstre_8c_a49ae433fa5c844479e69c76e66a60d1f}{check\+CollisionM}} (joueur\+\_\+t $\ast$j1, monstre\+\_\+t $\ast$m, int direction, int jeu\mbox{[}M\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em fonction qui vérifie si le monstre peut se déplacer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{monstre_8c_ada9eea7ad4cfe6f5fe3cf36a26884bc5}{deplacer\+Monstre}} (joueur\+\_\+t $\ast$j1, monstre\+\_\+t $\ast$m, char direction, int jeu\mbox{[}M\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em fonction qui déplace le monstre \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{monstre_8c_a0f692b536dcd94efcc2e657d133ca3b9}{afficher\+Map\+Monstre}} (joueur\+\_\+t j1, monstre\+\_\+t m1, monstre\+\_\+t m2, monstre\+\_\+t m3, int jeu\mbox{[}M\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em fonction qui affiche la matrice, les bonus, les monstres et le joueur \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+fonctions concernant la gestion des monstres 
+
+\begin{DoxyAuthor}{Auteur}
+Ilango Rémi, Lardais Benjamin, Geslain Simon, Haran Andy 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+19 avril 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{monstre_8c_a0f692b536dcd94efcc2e657d133ca3b9}\label{monstre_8c_a0f692b536dcd94efcc2e657d133ca3b9}} 
+\index{monstre.c@{monstre.c}!afficherMapMonstre@{afficherMapMonstre}}
+\index{afficherMapMonstre@{afficherMapMonstre}!monstre.c@{monstre.c}}
+\doxysubsubsection{\texorpdfstring{afficherMapMonstre()}{afficherMapMonstre()}}
+{\footnotesize\ttfamily int afficher\+Map\+Monstre (\begin{DoxyParamCaption}\item[{joueur\+\_\+t}]{j1,  }\item[{monstre\+\_\+t}]{m1,  }\item[{monstre\+\_\+t}]{m2,  }\item[{monstre\+\_\+t}]{m3,  }\item[{int}]{jeu\mbox{[}\+M\mbox{]}\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+fonction qui affiche la matrice, les bonus, les monstres et le joueur 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j1} & représente le joueur \\
+\hline
+{\em m1} & représente le monstre 1 \\
+\hline
+{\em m2} & représente le monstre 2 \\
+\hline
+{\em m3} & représente le monstre 3 \\
+\hline
+{\em jeu} & représente la matrice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 lorsque le joueur perd et 1 quand il gagne 
+\end{DoxyReturn}
+\mbox{\Hypertarget{monstre_8c_a49ae433fa5c844479e69c76e66a60d1f}\label{monstre_8c_a49ae433fa5c844479e69c76e66a60d1f}} 
+\index{monstre.c@{monstre.c}!checkCollisionM@{checkCollisionM}}
+\index{checkCollisionM@{checkCollisionM}!monstre.c@{monstre.c}}
+\doxysubsubsection{\texorpdfstring{checkCollisionM()}{checkCollisionM()}}
+{\footnotesize\ttfamily int check\+CollisionM (\begin{DoxyParamCaption}\item[{joueur\+\_\+t $\ast$}]{j1,  }\item[{monstre\+\_\+t $\ast$}]{m,  }\item[{int}]{direction,  }\item[{int}]{jeu\mbox{[}\+M\mbox{]}\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+fonction qui vérifie si le monstre peut se déplacer 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j1} & représente le joueur \\
+\hline
+{\em m} & représente un monstre \\
+\hline
+{\em direction} & représente la direction dans laquelle regarde le monstre \\
+\hline
+{\em jeu} & représente la matrice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne 0 si le déplacement est impossible ou 1 s\textquotesingle{}il est possible 
+\end{DoxyReturn}
+\mbox{\Hypertarget{monstre_8c_ada9eea7ad4cfe6f5fe3cf36a26884bc5}\label{monstre_8c_ada9eea7ad4cfe6f5fe3cf36a26884bc5}} 
+\index{monstre.c@{monstre.c}!deplacerMonstre@{deplacerMonstre}}
+\index{deplacerMonstre@{deplacerMonstre}!monstre.c@{monstre.c}}
+\doxysubsubsection{\texorpdfstring{deplacerMonstre()}{deplacerMonstre()}}
+{\footnotesize\ttfamily void deplacer\+Monstre (\begin{DoxyParamCaption}\item[{joueur\+\_\+t $\ast$}]{j1,  }\item[{monstre\+\_\+t $\ast$}]{m,  }\item[{char}]{direction,  }\item[{int}]{jeu\mbox{[}\+M\mbox{]}\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+fonction qui déplace le monstre 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j1} & représente le joueur \\
+\hline
+{\em m} & représente un monstre \\
+\hline
+{\em direction} & représente la direction dans laquelle regarde le monstre \\
+\hline
+{\em jeu} & représente la matrice \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{monstre_8c_ac19da0e946516065c3b5e65ac285ea2f}\label{monstre_8c_ac19da0e946516065c3b5e65ac285ea2f}} 
+\index{monstre.c@{monstre.c}!DetruireMonstre@{DetruireMonstre}}
+\index{DetruireMonstre@{DetruireMonstre}!monstre.c@{monstre.c}}
+\doxysubsubsection{\texorpdfstring{DetruireMonstre()}{DetruireMonstre()}}
+{\footnotesize\ttfamily void Detruire\+Monstre (\begin{DoxyParamCaption}\item[{joueur\+\_\+t $\ast$}]{j1,  }\item[{monstre\+\_\+t $\ast$}]{m1,  }\item[{monstre\+\_\+t $\ast$}]{m2,  }\item[{monstre\+\_\+t $\ast$}]{m3,  }\item[{int}]{k,  }\item[{int}]{jeu\mbox{[}\+M\mbox{]}\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+fonction qui détruit les monstres 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j1} & représente le joueur \\
+\hline
+{\em m1} & représente le monstre 1 \\
+\hline
+{\em m2} & représente le monstre 2 \\
+\hline
+{\em m3} & représente le monstre 3 \\
+\hline
+{\em k} & représente l\textquotesingle{}indice de la bombe qu\textquotesingle{}utilise le joueur \\
+\hline
+{\em jeu} & représente la matrice \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{monstre_8c_a9c02705edbc2e698a448c4fa13d1c684}\label{monstre_8c_a9c02705edbc2e698a448c4fa13d1c684}} 
+\index{monstre.c@{monstre.c}!effetBombeMonstre@{effetBombeMonstre}}
+\index{effetBombeMonstre@{effetBombeMonstre}!monstre.c@{monstre.c}}
+\doxysubsubsection{\texorpdfstring{effetBombeMonstre()}{effetBombeMonstre()}}
+{\footnotesize\ttfamily void effet\+Bombe\+Monstre (\begin{DoxyParamCaption}\item[{joueur\+\_\+t $\ast$}]{j1,  }\item[{monstre\+\_\+t $\ast$}]{m1,  }\item[{monstre\+\_\+t $\ast$}]{m2,  }\item[{monstre\+\_\+t $\ast$}]{m3,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{jeu\mbox{[}\+M\mbox{]}\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+fonction qui applique l\textquotesingle{}effet de la bombe sur le joueur, les murs, les monstres. Un mur cassé peut laisser un bonus. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j1} & représente le joueur \\
+\hline
+{\em m1} & représente le monstre 1 \\
+\hline
+{\em m2} & représente le monstre 2 \\
+\hline
+{\em m3} & représente le monstre 3 \\
+\hline
+{\em x} & représente la ligne dans la matrice \\
+\hline
+{\em y} & représente la colonne dans la matrice \\
+\hline
+{\em jeu} & représente la matrice \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,135 @@
+\hypertarget{bombe_8c}{}\doxysection{Référence du fichier bombe.\+c}
+\label{bombe_8c}\index{bombe.c@{bombe.c}}
+
+
+fonctions concernant la gestion des bombes  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../lib/bombe.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+Graphe des dépendances par inclusion de bombe.\+c\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{bombe_8c_aa34153995938be2fa32c0f8222c36364}{valides}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em fonction qui permet de savoir si une case est dans la matrice \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bombe_8c_ac2a436778ae02cd7739f93eea058dacf}{effet\+Bombe}} (joueur\+\_\+t $\ast$j1, joueur\+\_\+t $\ast$j2, joueur\+\_\+t $\ast$j3, joueur\+\_\+t $\ast$j4, int x, int y, int jeu\mbox{[}M\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em fonction qui applique l\textquotesingle{}effet des bombes sur les joueurs \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{bombe_8c_adbc3374674d6d6074b12e4b7cda8f64d}{check\+Pose\+Bombe}} (joueur\+\_\+t $\ast$j, int jeu\mbox{[}M\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em fonction qui vérifie si une bombe peut être posée \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bombe_8c_ae8fc0781adfb6b009b2bfe8e96efccd3}{Detruire}} (joueur\+\_\+t $\ast$j1, joueur\+\_\+t $\ast$j2, joueur\+\_\+t $\ast$j3, joueur\+\_\+t $\ast$j4, int k, int jeu\mbox{[}M\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em fonction qui fait exploser la bombe \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+fonctions concernant la gestion des bombes 
+
+\begin{DoxyAuthor}{Auteur}
+Ilango Rémi, Lardais Benjamin, Geslain Simon, Haran Andy 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+19 avril 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{bombe_8c_adbc3374674d6d6074b12e4b7cda8f64d}\label{bombe_8c_adbc3374674d6d6074b12e4b7cda8f64d}} 
+\index{bombe.c@{bombe.c}!checkPoseBombe@{checkPoseBombe}}
+\index{checkPoseBombe@{checkPoseBombe}!bombe.c@{bombe.c}}
+\doxysubsubsection{\texorpdfstring{checkPoseBombe()}{checkPoseBombe()}}
+{\footnotesize\ttfamily int check\+Pose\+Bombe (\begin{DoxyParamCaption}\item[{joueur\+\_\+t $\ast$}]{j,  }\item[{int}]{jeu\mbox{[}\+M\mbox{]}\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+fonction qui vérifie si une bombe peut être posée 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & représente le joueur \\
+\hline
+{\em jeu} & représente la matrice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne vrai si le joueur peut poser la bombe et 0 s\textquotesingle{}il ne peut pas 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bombe_8c_ae8fc0781adfb6b009b2bfe8e96efccd3}\label{bombe_8c_ae8fc0781adfb6b009b2bfe8e96efccd3}} 
+\index{bombe.c@{bombe.c}!Detruire@{Detruire}}
+\index{Detruire@{Detruire}!bombe.c@{bombe.c}}
+\doxysubsubsection{\texorpdfstring{Detruire()}{Detruire()}}
+{\footnotesize\ttfamily void Detruire (\begin{DoxyParamCaption}\item[{joueur\+\_\+t $\ast$}]{j1,  }\item[{joueur\+\_\+t $\ast$}]{j2,  }\item[{joueur\+\_\+t $\ast$}]{j3,  }\item[{joueur\+\_\+t $\ast$}]{j4,  }\item[{int}]{k,  }\item[{int}]{jeu\mbox{[}\+M\mbox{]}\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+fonction qui fait exploser la bombe 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j1} & représente le joueur 1 \\
+\hline
+{\em j2} & représente le joueur 2 \\
+\hline
+{\em j3} & représente le joueur 3 \\
+\hline
+{\em j4} & représente le joueur 4 \\
+\hline
+{\em k} & représente l\textquotesingle{}indice de la bombe qu\textquotesingle{}utilise le joueur \\
+\hline
+{\em jeu} & représente la matrice \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{bombe_8c_ac2a436778ae02cd7739f93eea058dacf}\label{bombe_8c_ac2a436778ae02cd7739f93eea058dacf}} 
+\index{bombe.c@{bombe.c}!effetBombe@{effetBombe}}
+\index{effetBombe@{effetBombe}!bombe.c@{bombe.c}}
+\doxysubsubsection{\texorpdfstring{effetBombe()}{effetBombe()}}
+{\footnotesize\ttfamily void effet\+Bombe (\begin{DoxyParamCaption}\item[{joueur\+\_\+t $\ast$}]{j1,  }\item[{joueur\+\_\+t $\ast$}]{j2,  }\item[{joueur\+\_\+t $\ast$}]{j3,  }\item[{joueur\+\_\+t $\ast$}]{j4,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{jeu\mbox{[}\+M\mbox{]}\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+fonction qui applique l\textquotesingle{}effet des bombes sur les joueurs 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j1} & représente le joueur 1 \\
+\hline
+{\em j2} & représente le joueur 2 \\
+\hline
+{\em j3} & représente le joueur 3 \\
+\hline
+{\em j4} & représente le joueur 4 \\
+\hline
+{\em x} & représente la colonne dans la matrice \\
+\hline
+{\em y} & représente la colonne dans la matrice \\
+\hline
+{\em jeu} & représente la matrice \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{bombe_8c_aa34153995938be2fa32c0f8222c36364}\label{bombe_8c_aa34153995938be2fa32c0f8222c36364}} 
+\index{bombe.c@{bombe.c}!valides@{valides}}
+\index{valides@{valides}!bombe.c@{bombe.c}}
+\doxysubsubsection{\texorpdfstring{valides()}{valides()}}
+{\footnotesize\ttfamily int valides (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+fonction qui permet de savoir si une case est dans la matrice 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em x} & représente la colonne dans la matrice \\
+\hline
+{\em y} & représente la colonne dans la matrice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne si la case est valide ou non 
+\end{DoxyReturn}

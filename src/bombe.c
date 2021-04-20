@@ -8,10 +8,38 @@
 #include <unistd.h>
 #include <time.h>
 
+
+/**
+* \file bombe.c
+* \brief fonctions concernant la gestion des bombes
+* \author Ilango Rémi, Lardais Benjamin, Geslain Simon, Haran Andy
+* \version 1
+* \date 19 avril 2021
+*/
+
+
+/**
+* \fn int valides(int x, int y)
+* \brief fonction qui permet de savoir si une case est dans la matrice
+* \param x représente la colonne dans la matrice
+* \param y représente la colonne dans la matrice
+* \return retourne si la case est valide ou non
+*/
 int valides(int x, int y){
   return((x>0 && x<M-1) && (y>0 && y<N-1));
 }
 
+/**
+* \fn void effetBombe(joueur_t * j1, joueur_t * j2, joueur_t * j3, joueur_t * j4, int x, int y, int jeu[M][N])
+* \brief fonction qui applique l'effet des bombes sur les joueurs
+* \param j1 représente le joueur 1
+* \param j2 représente le joueur 2
+* \param j3 représente le joueur 3
+* \param j4 représente le joueur 4
+* \param x représente la colonne dans la matrice
+* \param y représente la colonne dans la matrice
+* \param jeu représente la matrice
+*/
 void effetBombe(joueur_t * j1, joueur_t * j2, joueur_t * j3, joueur_t * j4, int x, int y, int jeu[M][N]){
 
   //effet de la bombe sur un joueur sur la trajectoire de la bombe
@@ -73,7 +101,13 @@ void effetBombe(joueur_t * j1, joueur_t * j2, joueur_t * j3, joueur_t * j4, int 
   }
 }
 
-
+/**
+* \fn int checkPoseBombe(joueur_t * j, int jeu[M][N])
+* \brief fonction qui vérifie si une bombe peut être posée
+* \param j représente le joueur
+* \param jeu représente la matrice
+* \return retourne vrai si le joueur peut poser la bombe et 0 s'il ne peut pas
+*/
 int checkPoseBombe(joueur_t * j, int jeu[M][N]){
   int x=0, y=0;
 
@@ -108,7 +142,16 @@ int checkPoseBombe(joueur_t * j, int jeu[M][N]){
   return 0;
 }
 
-
+/**
+* \fn void Detruire(joueur_t * j1, joueur_t * j2, joueur_t * j3, joueur_t * j4, int k, int jeu[M][N])
+* \brief fonction qui fait exploser la bombe
+* \param j1 représente le joueur 1
+* \param j2 représente le joueur 2
+* \param j3 représente le joueur 3
+* \param j4 représente le joueur 4
+* \param k représente l'indice de la bombe qu'utilise le joueur
+* \param jeu représente la matrice
+*/
 //une bombe détruit dans les 4 directions les objets cassable (mur cassable, pouvoir au sol, joueur)
 void Detruire(joueur_t * j1, joueur_t * j2, joueur_t * j3, joueur_t * j4, int k, int jeu[M][N]){
   int i;

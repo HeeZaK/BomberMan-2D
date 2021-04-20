@@ -9,18 +9,38 @@
 #include <time.h>
 #include <string.h>
 
-void afficherScore(joueur_t j1, SDL_Renderer ** renderer, int x, int y, int w, int h, SDL_Color color){ ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+* \file affichage_map.c
+* \brief Ce fichier contient les deux fonctions nécessaires pour l'affichage de la carte de jeu avec les pouvoirs des joueurs qu'ils ont. C'est aussi un fichier qui permet d'actualiser la carte et le score avec les interactions sur la matrice.
+* \author Ilango Rémi, Lardais Benjamin, Geslain Simon, Haran Andy
+* \date 19 avril 2021
+* \version 1
+*/
+
+
+/**
+* \fn void afficherScore(joueur_t j1, SDL_Renderer ** renderer, int x, int y, int w, int h, SDL_Color color)
+* \brief fonction qui permet d'afficher le score. Affiche les points de vitesses, de puissances, le nombre de bombe, et si le joueur possède un bouclier ou non.
+* \param j1 représente le joueur 1
+* \param renderer représente l'espace où l'on peut écrire
+* \param x représente la ligne dans la matrice
+* \param y représente la colonne dans la matrice
+* \param w représente la largeur de l'objet affiché
+* \param h représente la hauteur de l'objet affiché
+* \param color représente la couleur que l'on veut afficher
+*/
+void afficherScore(joueur_t j1, SDL_Renderer ** renderer, int x, int y, int w, int h, SDL_Color color){  //fonction pour afficher les bonus qu'a le joueur
 
   SDL_Surface *MMvitesse, *MMpuissance, *MMbombe, *MMshield;
   SDL_Texture *textureMMvitesse, *textureMMpuissance, *textureMMbombe, *textureMMshield;
   SDL_Rect rectVitesse, rectPuissance, rectBombe, rectShield;
   TTF_Font *font = TTF_OpenFont("../assets/fonts/arial.ttf", 300);
 
-// Vitesse ///////////////////////////////////////////////////////////////
-    char nb_v[1];
+  /////////////////////////////// Vitesse ////////////////////////////////////
+    char nb_v[1]; // nb_v correspond aux nombres de vitesse qu'a le joueur
     char vitesse[16]= "Vitesse : ";
     sprintf(nb_v,"%i", j1.vitesse);
-    strcat(vitesse, nb_v);
+    strcat(vitesse, nb_v); // nous mettons nb_v dans la chaine de caractères vitesse
 
           rectVitesse.x = x;
           rectVitesse.y = y;
@@ -33,13 +53,13 @@ void afficherScore(joueur_t j1, SDL_Renderer ** renderer, int x, int y, int w, i
       SDL_DestroyTexture(textureMMvitesse);
       SDL_FreeSurface(MMvitesse);
 
-/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 
-// Puissance ///////////////////////////////////////////////////////////////
-    char nb_p[1];
+/////////////////////////////// Puissance ////////////////////////////////////
+    char nb_p[1]; // nb_p correspond aux nombres de puissance qu'a le joueur
     char puissance[16]= "Puissance : ";
     sprintf(nb_p,"%i", j1.puissance);
-    strcat(puissance, nb_p);
+    strcat(puissance, nb_p); // nous mettons nb_p dans la chaine de caractères vitesse
 
           rectPuissance.x = x;
           rectPuissance.y = y +30;
@@ -51,13 +71,13 @@ void afficherScore(joueur_t j1, SDL_Renderer ** renderer, int x, int y, int w, i
       SDL_RenderCopy(*renderer, textureMMpuissance, NULL, &rectPuissance);
       SDL_DestroyTexture(textureMMpuissance);
       SDL_FreeSurface(MMpuissance);
-/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 
-// Bombe ///////////////////////////////////////////////////////////////
-   char nb_b[1];
+/////////////////////////////// Bombe ////////////////////////////////////
+   char nb_b[1]; // nb_b correspond aux nombres de bombe qu'a le joueur
    char bombe[16]= "Bombe : ";
    sprintf(nb_b,"%i", j1.nb_bomb);
-   strcat(bombe, nb_b);
+   strcat(bombe, nb_b); // nous mettons nb_b dans la chaine de caractères vitesse
 
          rectBombe.x = x;
          rectBombe.y = y+60;
@@ -69,13 +89,13 @@ void afficherScore(joueur_t j1, SDL_Renderer ** renderer, int x, int y, int w, i
      SDL_RenderCopy(*renderer, textureMMbombe, NULL, &rectBombe);
      SDL_DestroyTexture(textureMMbombe);
      SDL_FreeSurface(MMbombe);
-/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 
-// Shield ///////////////////////////////////////////////////////////////
-  char nb_s[1];
+/////////////////////////////// Shield ////////////////////////////////////
+  char nb_s[1]; // nb_s correspond aux nombres de bouclier qu'a le joueur
   char shield[16]= "Bouclier : ";
    sprintf(nb_s,"%i", j1.vie);
-   strcat(shield, nb_s);
+   strcat(shield, nb_s); // nous mettons nb_s dans la chaine de caractères vitesse
 
          rectShield.x = x;
          rectShield.y = y+90;
@@ -87,13 +107,20 @@ void afficherScore(joueur_t j1, SDL_Renderer ** renderer, int x, int y, int w, i
      SDL_RenderCopy(*renderer, textureMMshield, NULL, &rectShield);
      SDL_DestroyTexture(textureMMshield);
      SDL_FreeSurface(MMshield);
-/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 TTF_CloseFont(font);
 }
 
-
-
-
+/**
+* \fn joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][N])
+* \brief fonction qui permet d'afficher la matrice avec les joueurs et les pouvoirs
+* \param j1 représente le joueur 1
+* \param j2 représente le joueur 2
+* \param j3 représente le joueur 3
+* \param j4 représente le joueur 4
+* \param jeu représente la matrice.
+* \return retourne le joueur qui a gagné
+*/
 joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][N]) {
 
   SDL_Color rouge = {255, 0, 0, 0};
@@ -140,28 +167,28 @@ joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int j
   bitmapMurC = IMG_LoadTexture(renderer, "../assets/map/murcassable1.png");   //MurCassable
 
   //joueur1
-  bitmapJ1N = IMG_LoadTexture(renderer, "../assets/bonhomme/rouge/bonhommeArriere.png");
-  bitmapJ1E = IMG_LoadTexture(renderer, "../assets/bonhomme/rouge/bonhommeDroite.png");
-  bitmapJ1S = IMG_LoadTexture(renderer, "../assets/bonhomme/rouge/bonhommeAvant.png");
-  bitmapJ1W = IMG_LoadTexture(renderer, "../assets/bonhomme/rouge/bonhommeGauche.png");
+  bitmapJ1N = IMG_LoadTexture(renderer, "../assets/bonhomme/rouge/bonhommeArriere.png"); // position du joueur 1 regardant vers le haut
+  bitmapJ1E = IMG_LoadTexture(renderer, "../assets/bonhomme/rouge/bonhommeDroite.png"); // position du joueur 1 regardant vers la droite
+  bitmapJ1S = IMG_LoadTexture(renderer, "../assets/bonhomme/rouge/bonhommeAvant.png"); // position du joueur 1 regardant vers le bas
+  bitmapJ1W = IMG_LoadTexture(renderer, "../assets/bonhomme/rouge/bonhommeGauche.png"); // position du joueur 1 regardant vers la gauche
 
   //joueur2
-  bitmapJ2N = IMG_LoadTexture(renderer, "../assets/bonhomme/bleu/bonhommeArriere.png");
-  bitmapJ2E = IMG_LoadTexture(renderer, "../assets/bonhomme/bleu/bonhommeDroite.png");
-  bitmapJ2S = IMG_LoadTexture(renderer, "../assets/bonhomme/bleu/bonhommeAvant.png");
-  bitmapJ2W = IMG_LoadTexture(renderer, "../assets/bonhomme/bleu/bonhommeGauche.png");
+  bitmapJ2N = IMG_LoadTexture(renderer, "../assets/bonhomme/bleu/bonhommeArriere.png"); // position du joueur 2 regardant vers le haut
+  bitmapJ2E = IMG_LoadTexture(renderer, "../assets/bonhomme/bleu/bonhommeDroite.png"); // position du joueur 2 regardant vers la droite
+  bitmapJ2S = IMG_LoadTexture(renderer, "../assets/bonhomme/bleu/bonhommeAvant.png"); // position du joueur 2 regardant vers le bas
+  bitmapJ2W = IMG_LoadTexture(renderer, "../assets/bonhomme/bleu/bonhommeGauche.png"); // position du joueur 2 regardant vers la gauche
 
   //joueur3
-  bitmapJ3N = IMG_LoadTexture(renderer, "../assets/bonhomme/jaune/bonhommeArriere.png");
-  bitmapJ3E = IMG_LoadTexture(renderer, "../assets/bonhomme/jaune/bonhommeDroite.png");
-  bitmapJ3S = IMG_LoadTexture(renderer, "../assets/bonhomme/jaune/bonhommeAvant.png");
-  bitmapJ3W = IMG_LoadTexture(renderer, "../assets/bonhomme/jaune/bonhommeGauche.png");
+  bitmapJ3N = IMG_LoadTexture(renderer, "../assets/bonhomme/jaune/bonhommeArriere.png"); // position du joueur 3 regardant vers le haut
+  bitmapJ3E = IMG_LoadTexture(renderer, "../assets/bonhomme/jaune/bonhommeDroite.png"); // position du joueur 3 regardant vers la droite
+  bitmapJ3S = IMG_LoadTexture(renderer, "../assets/bonhomme/jaune/bonhommeAvant.png"); // position du joueur 3 regardant vers le bas
+  bitmapJ3W = IMG_LoadTexture(renderer, "../assets/bonhomme/jaune/bonhommeGauche.png"); // position du joueur 3 regardant vers la gauche
 
   //joueur4
-  bitmapJ4N = IMG_LoadTexture(renderer, "../assets/bonhomme/vert/bonhommeArriere.png");
-  bitmapJ4E = IMG_LoadTexture(renderer, "../assets/bonhomme/vert/bonhommeDroite.png");
-  bitmapJ4S = IMG_LoadTexture(renderer, "../assets/bonhomme/vert/bonhommeAvant.png");
-  bitmapJ4W = IMG_LoadTexture(renderer, "../assets/bonhomme/vert/bonhommeGauche.png");
+  bitmapJ4N = IMG_LoadTexture(renderer, "../assets/bonhomme/vert/bonhommeArriere.png"); // position du joueur 4 regardant vers le haut
+  bitmapJ4E = IMG_LoadTexture(renderer, "../assets/bonhomme/vert/bonhommeDroite.png"); // position du joueur 4 regardant vers la droite
+  bitmapJ4S = IMG_LoadTexture(renderer, "../assets/bonhomme/vert/bonhommeAvant.png"); // position du joueur 4 regardant vers le bas
+  bitmapJ4W = IMG_LoadTexture(renderer, "../assets/bonhomme/vert/bonhommeGauche.png"); // position du joueur 4 regardant vers la gauche
 
   bitmapBombeJ1 = IMG_LoadTexture(renderer, "../assets/bombe/bombe_rouge.png");   //bombe J1
   bitmapBombeJ2 = IMG_LoadTexture(renderer, "../assets/bombe/bombe_bleu.png");   //bombe J2
@@ -301,6 +328,7 @@ joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int j
           break;
       }
 
+      //Les quatre boucles permettent de faire exploser la bombe 2 secondes après l'avoir posée
       for(int i=0; i<j1.nb_bomb; i++){
         if((SDL_GetTicks() > j1.bombe[i].timer + 2000) && j1.bombe[i].timer!=0){
           Detruire(&j1,&j2,&j3,&j4,i,jeu);
@@ -337,6 +365,7 @@ joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int j
         }
       }
 
+      //Les quatres if permettent de faire déplacer le joueur en fonction de la vitesse
       if(j1.timer!=0 && (SDL_GetTicks() > j1.timer + 1000 - (100*j1.vitesse))){
         j1.timer=0;
       }
@@ -353,11 +382,12 @@ joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int j
         j4.timer=0;
       }
 
-
+      //retourne un gagnant s'il y en a un
       if((gagnant=verifGagnant(&j1,&j2,&j3,&j4,jeu))!=NULL){
         return(gagnant);
       }
 
+      //Affichage de la carte avec ses éléments
       SDL_RenderCopy(renderer, bitmapFond, NULL, NULL);
       for(int i=0; i<M;i++){
         for(int j=0; j<N;j++){
@@ -568,10 +598,10 @@ joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int j
       }
 
 
- afficherScore(j1, &renderer, 5, 20, 160, 28, rouge);
- afficherScore(j2, &renderer, 942, 800, 160, 28, bleu);
- afficherScore(j3, &renderer, 5, 800, 160, 28, jaune);
- afficherScore(j4, &renderer, 942, 20, 160, 28, vert);
+      afficherScore(j1, &renderer, 5, 20, 160, 28, rouge); // on affiche le score pour le joueur 1 à une position donné par rapport a son spawn de départ
+      afficherScore(j2, &renderer, 942, 800, 160, 28, bleu); // on affiche le score pour le joueur 2 à une position donné par rapport a son spawn de départ
+      afficherScore(j3, &renderer, 5, 800, 160, 28, jaune); // on affiche le score pour le joueur 3 à une position donné par rapport a son spawn de départ
+      afficherScore(j4, &renderer, 942, 20, 160, 28, vert); // on affiche le score pour le joueur 4 à une position donné par rapport a son spawn de départ
 
 
       SDL_RenderPresent(renderer); //affichage de tout
@@ -581,44 +611,44 @@ joueur_t * afficherMap(joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int j
 
   }
 
-  SDL_DestroyTexture(bitmapFond); //Fond
-  SDL_DestroyTexture(bitmapMurI); //Mur Incassable
-  SDL_DestroyTexture(bitmapMurC); //Mur MurCassable
+  SDL_DestroyTexture(bitmapFond);  // destructions de la texture qui contient le Fond
+  SDL_DestroyTexture(bitmapMurI); // destructions de la texture qui contient le Mur Incassable
+  SDL_DestroyTexture(bitmapMurC); //destructions de la texture qui contient le Mur MurCassable
   // joueur1
-  SDL_DestroyTexture(bitmapJ1N);
-  SDL_DestroyTexture(bitmapJ1E);
-  SDL_DestroyTexture(bitmapJ1S);
-  SDL_DestroyTexture(bitmapJ1W);
+  SDL_DestroyTexture(bitmapJ1N); // destructions de la texture qui contient le joueur 1 regardant vers le haut
+  SDL_DestroyTexture(bitmapJ1E); // destructions de la texture qui contient le joueur 1 regardant vers la droite
+  SDL_DestroyTexture(bitmapJ1S); // destructions de la texture qui contient le joueur 1 regardant vers le bas
+  SDL_DestroyTexture(bitmapJ1W); // destructions de la texture qui contient le joueur 1 regardant vers le gauche
 
   // joueur2
-  SDL_DestroyTexture(bitmapJ2N);
-  SDL_DestroyTexture(bitmapJ2E);
-  SDL_DestroyTexture(bitmapJ2S);
-  SDL_DestroyTexture(bitmapJ2W);
+  SDL_DestroyTexture(bitmapJ2N); // destructions de la texture qui contient le joueur 2 regardant vers le haut
+  SDL_DestroyTexture(bitmapJ2E); // destructions de la texture qui contient le joueur 2 regardant vers la droite
+  SDL_DestroyTexture(bitmapJ2S); // destructions de la texture qui contient le joueur 2 regardant vers le bas
+  SDL_DestroyTexture(bitmapJ2W); // destructions de la texture qui contient le joueur 2 regardant vers le gauche
 
   // joueur3
-  SDL_DestroyTexture(bitmapJ3N);
-  SDL_DestroyTexture(bitmapJ3E);
-  SDL_DestroyTexture(bitmapJ3S);
-  SDL_DestroyTexture(bitmapJ3W);
+  SDL_DestroyTexture(bitmapJ3N); // destructions de la texture qui contient le joueur 3 regardant vers le haut
+  SDL_DestroyTexture(bitmapJ3E); // destructions de la texture qui contient le joueur 3 regardant vers la droite
+  SDL_DestroyTexture(bitmapJ3S); // destructions de la texture qui contient le joueur 3 regardant vers le bas
+  SDL_DestroyTexture(bitmapJ3W); // destructions de la texture qui contient le joueur 3 regardant vers le gauche
 
   // joueur4
-  SDL_DestroyTexture(bitmapJ4N);
-  SDL_DestroyTexture(bitmapJ4E);
-  SDL_DestroyTexture(bitmapJ4S);
-  SDL_DestroyTexture(bitmapJ4W);
+  SDL_DestroyTexture(bitmapJ4N); // destructions de la texture qui contient le joueur 4 regardant vers le haut
+  SDL_DestroyTexture(bitmapJ4E); // destructions de la texture qui contient le joueur 4 regardant vers la droite
+  SDL_DestroyTexture(bitmapJ4S); // destructions de la texture qui contient le joueur 4 regardant vers le bas
+  SDL_DestroyTexture(bitmapJ4W); // destructions de la texture qui contient le joueur 4 regardant vers le gauche
 
   // bombes joueurs
-  SDL_DestroyTexture(bitmapBombeJ1);
-  SDL_DestroyTexture(bitmapBombeJ2);
-  SDL_DestroyTexture(bitmapBombeJ3);
-  SDL_DestroyTexture(bitmapBombeJ4);
+  SDL_DestroyTexture(bitmapBombeJ1); // destructions de la texture qui contient la bombe joueur 1
+  SDL_DestroyTexture(bitmapBombeJ2); // destructions de la texture qui contient la bombe joueur 2
+  SDL_DestroyTexture(bitmapBombeJ3); // destructions de la texture qui contient la bombe joueur 3
+  SDL_DestroyTexture(bitmapBombeJ4); // destructions de la texture qui contient la bombe joueur 4
 
   // Bonus
-  SDL_DestroyTexture(bitmapPlusBombe);
-  SDL_DestroyTexture(bitmapVitesse);
-  SDL_DestroyTexture(bitmapPuissance);
-  SDL_DestroyTexture(bitmapShield);
+  SDL_DestroyTexture(bitmapPlusBombe); //destructions de la texture qui contient le bonus plus de bombe
+  SDL_DestroyTexture(bitmapVitesse); // destructions de la texture qui contient le bonus vitesse
+  SDL_DestroyTexture(bitmapPuissance); // destructions de la texture qui contient le bonus puissance
+  SDL_DestroyTexture(bitmapShield); // destructions de la texture qui contient le bonus bouclier
 
 
 

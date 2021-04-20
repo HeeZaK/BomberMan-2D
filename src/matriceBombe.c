@@ -4,7 +4,19 @@
 #include <unistd.h>
 #include <time.h>
 
+/**
+* \file matriceBombe.c
+* \brief fonctions concernant la gestion de la matrice
+* \author Ilango Rémi, Lardais Benjamin, Geslain Simon, Haran Andy
+* \version 1
+* \date 19 octobre 2021
+*/
 
+/**
+* \fn void innitMatrice(int jeu[M][N])
+* \brief fonction qui vide la matrice en mettant chaque case à 0
+* \param jeu représente la matrice
+*/
 // vider la map totalement
 void innitMatrice(int jeu[M][N]){
   for(int i=0; i<M;i++){
@@ -14,6 +26,11 @@ void innitMatrice(int jeu[M][N]){
   }
 }
 
+/**
+* \fn void placerMurIncassable(int jeu[M][N])
+* \brief fonction qui place les murs incassables
+* \param jeu représente la matrice
+*/
 // placer les murs incassable de la map
 void placerMurIncassable(int jeu[M][N]){
   for(int i=0; i<M;i++){
@@ -28,6 +45,12 @@ void placerMurIncassable(int jeu[M][N]){
   }
 }
 
+/**
+* \fn void placerMurCassable(int jeu[M][N], int proba)
+* \brief fonction qui place les murs cassables. Mur cassable=2
+* \param jeu représente la matrice
+* \param proba représente la probabilité qu'un mur placé soit cassable
+*/
 // placer les murs cassable de la map
 void placerMurCassable(int jeu[M][N], int proba){
   for(int i=1; i<M-1;i++){
@@ -39,7 +62,7 @@ void placerMurCassable(int jeu[M][N], int proba){
       }
     }
   }
-  //place par défaut pour spawn dans les coins de la map
+  //Libération des places par défaut pour spawn dans les coins de la map
   jeu[1][1]=0;
   jeu[1][2]=0;
   jeu[2][1]=0;
@@ -58,7 +81,11 @@ void placerMurCassable(int jeu[M][N], int proba){
 
 }
 
-
+/**
+* \fn void afficherMatrice(int jeu[M][N])
+* \brief fonction qui affiche la matrice dans le terminal
+* \param jeu représente la matrice
+*/
 // afficher la map dans le cmd
 void afficherMatrice(int jeu[M][N]){
   for(int i=0; i<M;i++){

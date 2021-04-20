@@ -9,6 +9,25 @@
 #include "../lib/affichage_map.h"
 
 
+/**
+* \file monstre.c
+* \brief fonctions concernant la gestion des monstres
+* \author Ilango Rémi, Lardais Benjamin, Geslain Simon, Haran Andy
+* \version 1
+* \date 19 avril 2021
+*/
+
+/**
+* \fn void effetBombeMonstre(joueur_t * j1, monstre_t * m1, monstre_t * m2, monstre_t * m3, int x, int y, int jeu[M][N])
+* \brief fonction qui applique l'effet de la bombe sur le joueur, les murs, les monstres. Un mur cassé peut laisser un bonus.
+* \param j1 représente le joueur
+* \param m1 représente le monstre 1
+* \param m2 représente le monstre 2
+* \param m3 représente le monstre 3
+* \param x représente la ligne dans la matrice
+* \param y représente la colonne dans la matrice
+* \param jeu représente la matrice
+*/
 void effetBombeMonstre(joueur_t * j1, monstre_t * m1, monstre_t * m2, monstre_t * m3, int x, int y, int jeu[M][N]){
 
   //effet de la bombe sur un joueur sur la trajectoire de la bombe
@@ -36,6 +55,7 @@ void effetBombeMonstre(joueur_t * j1, monstre_t * m1, monstre_t * m2, monstre_t 
     jeu[x][y]=0;
   }
 
+  //effet de la bombe sur le monstre m1 sur la trajectoire de la bombe
   if(x==m1->pos_x && y==m1->pos_y){
     if(m1->vie>0){
       m1->vie--;
@@ -47,6 +67,7 @@ void effetBombeMonstre(joueur_t * j1, monstre_t * m1, monstre_t * m2, monstre_t 
     }
   }
 
+  //effet de la bombe sur le monstre m2 sur la trajectoire de la bombe
   if(x==m2->pos_x && y==m2->pos_y){
     if(m2->vie>0){
       m2->vie--;
@@ -58,6 +79,7 @@ void effetBombeMonstre(joueur_t * j1, monstre_t * m1, monstre_t * m2, monstre_t 
     }
   }
 
+  //effet de la bombe sur le monstre m3 sur la trajectoire de la bombe
   if(x==m3->pos_x && y==m3->pos_y){
     if(m3->vie>0){
       m3->vie--;
@@ -70,7 +92,16 @@ void effetBombeMonstre(joueur_t * j1, monstre_t * m1, monstre_t * m2, monstre_t 
   }
 }
 
-
+/**
+* \fn void DetruireMonstre(joueur_t * j1, monstre_t * m1, monstre_t * m2, monstre_t * m3, int k, int jeu[M][N])
+* \brief fonction qui détruit les monstres
+* \param j1 représente le joueur
+* \param m1 représente le monstre 1
+* \param m2 représente le monstre 2
+* \param m3 représente le monstre 3
+* \param k représente l'indice de la bombe qu'utilise le joueur
+* \param jeu représente la matrice
+*/
 //une bombe détruit dans les 4 directions les objets cassable (mur cassable, pouvoir au sol, joueur)
 void DetruireMonstre(joueur_t * j1, monstre_t * m1, monstre_t * m2, monstre_t * m3, int k, int jeu[M][N]){
   int i;
@@ -103,6 +134,15 @@ void DetruireMonstre(joueur_t * j1, monstre_t * m1, monstre_t * m2, monstre_t * 
 
 }
 
+/**
+* \fn int checkCollisionM(joueur_t * j1, monstre_t * m, int direction, int jeu[M][N])
+* \brief fonction qui vérifie si le monstre peut se déplacer
+* \param j1 représente le joueur
+* \param m représente un monstre
+* \param direction représente la direction dans laquelle regarde le monstre
+* \param jeu représente la matrice
+* \return retourne 0 si le déplacement est impossible ou 1 s'il est possible
+*/
 int checkCollisionM(joueur_t * j1, monstre_t * m, int direction, int jeu[M][N]){
   //La fonction renvoie 0 si le déplacement n'est pas possible, 1 si il l'est
   //Direction prend 0 : droite, 1 : bas, 2 : gauche, 3 : haut
@@ -198,6 +238,14 @@ int checkCollisionM(joueur_t * j1, monstre_t * m, int direction, int jeu[M][N]){
 
 }
 
+/**
+* \fn void deplacerMonstre(joueur_t *j1, monstre_t *m, char direction, int jeu[M][N])
+* \brief fonction qui déplace le monstre
+* \param j1 représente le joueur
+* \param m représente un monstre
+* \param direction représente la direction dans laquelle regarde le monstre
+* \param jeu représente la matrice
+*/
 void deplacerMonstre(joueur_t *j1,monstre_t *m, char direction, int jeu[M][N]){
   //Direction prend 0 : droite, 1 : bas, 2 : gauche, 3 : haut
   switch(direction){
@@ -260,7 +308,16 @@ void deplacerMonstre(joueur_t *j1,monstre_t *m, char direction, int jeu[M][N]){
   }
 }
 
-// la fonction retourne 0 lorsque le joueur perd et 1 quand il gagne
+/**
+* \fn int afficherMapMonstre(joueur_t j1, monstre_t m1, monstre_t m2, monstre_t m3, int jeu[M][N])
+* \brief fonction qui affiche la matrice, les bonus, les monstres et le joueur
+* \param j1 représente le joueur
+* \param m1 représente le monstre 1
+* \param m2 représente le monstre 2
+* \param m3 représente le monstre 3
+* \param jeu représente la matrice
+* \return 0 lorsque le joueur perd et 1 quand il gagne
+*/
 int afficherMapMonstre(joueur_t j1, monstre_t m1, monstre_t m2, monstre_t m3, int jeu[M][N]) {
 
   SDL_Color rouge = {255, 0, 0, 0};
@@ -328,7 +385,7 @@ int afficherMapMonstre(joueur_t j1, monstre_t m1, monstre_t m2, monstre_t m3, in
       switch (event.type){
         //fermer la fenêtre
         case SDL_QUIT:
-          return NULL;
+          return -1;
           break;
 
         case SDL_KEYDOWN:
@@ -369,7 +426,6 @@ int afficherMapMonstre(joueur_t j1, monstre_t m1, monstre_t m2, monstre_t m3, in
         }
       }
 
-      //deplacerMonstre(&m, m.direction, jeu);
 
       SDL_RenderCopy(renderer, bitmapFond, NULL, NULL);
       for(int i=0; i<M;i++){
@@ -485,7 +541,7 @@ int afficherMapMonstre(joueur_t j1, monstre_t m1, monstre_t m2, monstre_t m3, in
         }
       }
 
-// déplacement des monstres
+      // déplacement des monstres
       if(temps_monstre == 0){
           temps_monstre = SDL_GetTicks();
 

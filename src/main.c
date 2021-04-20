@@ -9,6 +9,15 @@
 #include "../lib/level.h"
 
 
+/**
+* \file main.c
+* \brief fonction regroupant tous les modes de jeux avec les menus
+* \author Ilango Rémi, Lardais Benjamin, Geslain Simon, Haran Andy
+* \version 1
+* \date 19 avril 2021
+*/
+
+
 int main(int argc, char ** argv){
   srand( time(NULL));
 

@@ -7,6 +7,20 @@
 #include "../lib/affichage_map.h"
 #include "../lib/menu.h"
 
+/**
+* \file menu.c
+* \brief Ce fichier regroupe les différents menus qui permet de choisir les options que nous voulons. Il y a aussi tous les affichages textes qui ne sont pas sur la carte de jeu.
+* \author Ilango Rémi, Lardais Benjamin, Geslain Simon, Haran Andy
+* \date 19 avril 2021
+* \version 1
+*/
+
+
+/**
+*\fn int menu()
+*\brief Cette fonction affiche un menu qui propose trois choix, le mode multijoueur, le mode ou exit pour quitter.
+*\return Une valeur comprise entre 1 et 3 qui correspond au mode choisit et -1 si l'utilisateur décide de fermer la fenêtre.
+*/
 int menu(){
   TTF_Init();
   int val = 1; //1 : mode multi, 2 : mode solo, 3 : exit
@@ -19,10 +33,10 @@ int menu(){
 
   if(pRenderer){
 
-      //Programme du jeu
       int continuer = 1;
       SDL_Event event;
 
+      //Initialisation de la police d'écriture :
       TTF_Font *font = TTF_OpenFont("../assets/fonts/Mermaid1001.ttf", 35);
 
       SDL_Surface *MMorange, *MMblanc, *MSorange, *MSblanc, *ExitOrange, *ExitBlanc;
@@ -31,6 +45,7 @@ int menu(){
       SDL_Color blanc = {255, 255, 255, 0};
       SDL_Color orange = {255, 165, 0, 0};
 
+      //Les différents textes affichés peuvent être de deux couleurs différentes
       MMorange = TTF_RenderText_Solid(font, "Mode multijoueur", orange);
       MMblanc = TTF_RenderText_Solid(font, "Mode multijoueur", blanc);
       textureMMorange = SDL_CreateTextureFromSurface(pRenderer, MMorange);
@@ -47,7 +62,7 @@ int menu(){
       textureExitBlanc = SDL_CreateTextureFromSurface(pRenderer, ExitBlanc);
 
 
-
+      //Boucle qui permet d'actualiser l'affichage en fonction de l'interaction
       while (continuer) {
           SDL_SetRenderDrawColor(pRenderer, 0, 0, 0, 255);
 
@@ -56,6 +71,7 @@ int menu(){
                 //fermer la fenêtre
                 case SDL_QUIT:
                   continuer=0;
+                  return(-1);
                   break;
 
                 case SDL_KEYDOWN:
@@ -82,6 +98,7 @@ int menu(){
               }
           }
 
+          //Affiche les textes de la bonne couleur en fonction du mode sélectionné
           if(val==1){
             rect.x = 200 - ((MMorange->w)/2);
             rect.y = 100 - ((MMorange->h)/2);
@@ -146,6 +163,7 @@ int menu(){
           SDL_RenderClear(pRenderer);
       }
 
+      //Destruction de toutes les textures
       SDL_DestroyTexture(textureMMorange);
       SDL_DestroyTexture(textureMMblanc);
       SDL_DestroyTexture(textureMSorange);
@@ -153,6 +171,7 @@ int menu(){
       SDL_DestroyTexture(textureExitOrange);
       SDL_DestroyTexture(textureExitBlanc);
 
+      //Libération de toutes les surfaces
       SDL_FreeSurface(MMorange);
       SDL_FreeSurface(MMblanc);
       SDL_FreeSurface(MSorange);
@@ -180,6 +199,11 @@ int menu(){
   return (val);
 }
 
+/**
+*\fn int menuMultijoueur()
+*\brief Cette fonction affiche un menu qui propose trois choix pour le nombre de joueur, 2, 3 ou 4.
+*\return Une valeur comprise entre 2 et 4 qui correspond au mode choisit et -1 si l'utilisateur décide de fermer la fenêtre.
+*/
 
 int menuMultijoueur(){
   TTF_Init();
@@ -194,10 +218,11 @@ int menuMultijoueur(){
 
   if(pRenderer){
 
-      //Programme du jeu
+
       int continuer = 1;
       SDL_Event event;
 
+      //Initialisation de la police d'écriture :
       TTF_Font *font = TTF_OpenFont("../assets/fonts/Mermaid1001.ttf", 35);
 
       SDL_Surface *surface, *deuxOrange, *deuxBlanc, *troisOrange, *troisBlanc, *quatreOrange, *quatreBlanc;
@@ -206,6 +231,7 @@ int menuMultijoueur(){
       SDL_Color blanc = {255, 255, 255, 0};
       SDL_Color orange = {255, 165, 0, 0};
 
+      //Les différents textes affichés peuvent être de deux couleurs différentes sauf pour "Nombre de joueur :"
       surface = TTF_RenderText_Solid(font, "Nombre de joueur :", orange);
       texture = SDL_CreateTextureFromSurface(pRenderer, surface);
 
@@ -224,7 +250,7 @@ int menuMultijoueur(){
       textureQuatreOrange = SDL_CreateTextureFromSurface(pRenderer, quatreOrange);
       textureQuatreBlanc = SDL_CreateTextureFromSurface(pRenderer, quatreBlanc);
 
-
+      //Boucle qui permet d'actualiser l'affichage en fonction de l'interaction
       while (continuer) {
           SDL_SetRenderDrawColor(pRenderer, 0, 0, 0, 255);
 
@@ -233,7 +259,7 @@ int menuMultijoueur(){
                 //fermer la fenêtre
                 case SDL_QUIT:
                   continuer=0;
-                  return(0);
+                  return(-1);
                   break;
 
                 case SDL_KEYDOWN:
@@ -261,12 +287,14 @@ int menuMultijoueur(){
           }
 
 
+          //Affiche le texte "Nombre de joueur :" en orange
           rect.x = 200 - ((surface->w)/2);
           rect.y = 200 - ((surface->h)/2);
           rect.w = surface->w;
           rect.h = surface->h;
           SDL_RenderCopy(pRenderer, texture, NULL, &rect);
 
+          //Affiche les textes de la bonne couleur en fonction du mode sélectionné
           if(val==2){
             rect.x = 400 - ((deuxOrange->w)/2);
             rect.y = 200 - ((deuxOrange->h)/2);
@@ -329,7 +357,7 @@ int menuMultijoueur(){
           SDL_RenderPresent(pRenderer);
           SDL_RenderClear(pRenderer);
       }
-
+      //Destruction de toutes les textures
       SDL_DestroyTexture(textureDeuxOrange);
       SDL_DestroyTexture(texture);
       SDL_DestroyTexture(textureDeuxBlanc);
@@ -338,6 +366,7 @@ int menuMultijoueur(){
       SDL_DestroyTexture(textureQuatreOrange);
       SDL_DestroyTexture(textureQuatreBlanc);
 
+      //Libération de toutes les surfaces
       SDL_FreeSurface(surface);
       SDL_FreeSurface(deuxOrange);
       SDL_FreeSurface(deuxBlanc);
@@ -369,13 +398,24 @@ int menuMultijoueur(){
 }
 
 
+/**
+*\fn int lancerPartieMulti(int nb_joueur)
+*\brief Cette fonction lance une partie en mutlijoueur local en fonction du nombre de joueur sélectionné dans le menu.
+*\param int nb_joueur correspond au nombre de joueur qui joue
+*\return  L'identifiant du gagnant qui a réussi à éliminer tout ses adversaires.
+*/
+
 int lancerPartieMulti(int nb_joueur){
   int jeu[M][N];
   joueur_t * gagnant;
 
+  //Initialisation des bombes
   bombe_t bombe_vide[9];
+
+  //Initialisation d'un joueur qui ne sera pas sur la carte, nécessaire lorsqu'il y a moins de quatre joueurs
   joueur_t joueurNULL = {0, -1, -1, 'E', 0, 0, 0, 0, 0, 0, bombe_vide};
 
+  //Initialisation des quatre joueurs
   joueur_t joueur1 = {-1, 1, 1, 'E', 0, 0, 0, 1, 1, -11, bombe_vide};
   joueur_t joueur2 = {-2, 9, 13, 'W', 0, 0, 0, 1, 1, -12, bombe_vide};
   joueur_t joueur3 = {-3, 9, 1, 'E', 0, 0, 0, 1, 1, -13, bombe_vide};
@@ -385,12 +425,13 @@ int lancerPartieMulti(int nb_joueur){
   SDL_Init(SDL_INIT_VIDEO);
   TTF_Init();
 
-
+  //Initialisation de la matrice
   innitMatrice(jeu);
   placerMurIncassable(jeu);
   placerMurCassable(jeu, 85);
 
 
+  //Place les joueurs sur la matrice en fonction de leur positions.
   switch(nb_joueur){
     case 2:
       joueur3 = joueurNULL;
@@ -417,9 +458,9 @@ int lancerPartieMulti(int nb_joueur){
       break;
   }
 
+  //Lancement de la partie avec la fonction afficherMap qui va retourner le gagnant
   gagnant = afficherMap(joueur1, joueur2, joueur3, joueur4, jeu);
 
-  //Faire écran de victoire
   if(gagnant!=NULL){
     return (gagnant->id)*(-1);
   }
@@ -428,22 +469,28 @@ int lancerPartieMulti(int nb_joueur){
   }
 }
 
+/**
+*\fn void afficheGagnant(int id_joueur)
+*\brief Cette fonction affiche le gagnant à l'écran
+*\param int id_joueur, identifiant du joueur qui a gagné la partie
+*/
 void afficheGagnant(int id_joueur){
 
   TTF_Init();
   //Création de la fenêtre et du rendu
   int posX = 100, posY = 100, width = 840, height = 616;
   SDL_Window* win = NULL;
-  win = SDL_CreateWindow("Menu", posX, posY, width, height, 0);
+  win = SDL_CreateWindow("Bomberman 2D", posX, posY, width, height, 0);
 
   SDL_Renderer *pRenderer = SDL_CreateRenderer(win,-1,SDL_RENDERER_ACCELERATED);
 
   if(pRenderer){
 
+      //Initialisation de la police d'écriture :
       TTF_Font *font = TTF_OpenFont("../assets/fonts/Mermaid1001.ttf", 35);
 
-      SDL_Surface *vJ1, *vJ2, *vJ3, *vJ4, *erreur;
-      SDL_Texture *textureVJ1, *textureVJ2, *textureVJ3, *textureVJ4, *textureErreur;
+      SDL_Surface *vJ1, *vJ2, *vJ3, *vJ4, *erreur, *perdu;
+      SDL_Texture *textureVJ1, *textureVJ2, *textureVJ3, *textureVJ4, *textureErreur, *texturePerdu;
       SDL_Rect rect;
       SDL_Color blanc = {255, 255, 255, 0};
       SDL_Color rouge = {255, 0, 0, 0};
@@ -451,6 +498,7 @@ void afficheGagnant(int id_joueur){
       SDL_Color jaune = {255, 255, 0, 0};
       SDL_Color vert = {0, 255, 0, 0};
 
+      //Initialisation des textes en fonction du joueur
       vJ1 = TTF_RenderText_Solid(font, "Victoire du joueur 1!", rouge);
       textureVJ1 = SDL_CreateTextureFromSurface(pRenderer, vJ1);
       vJ2 = TTF_RenderText_Solid(font, "Victoire du joueur 2!", bleu);
@@ -459,6 +507,8 @@ void afficheGagnant(int id_joueur){
       textureVJ3 = SDL_CreateTextureFromSurface(pRenderer, vJ3);
       vJ4 = TTF_RenderText_Solid(font, "Victoire du joueur 4!", vert);
       textureVJ4 = SDL_CreateTextureFromSurface(pRenderer, vJ4);
+      perdu = TTF_RenderText_Solid(font, "T'as perdu contre les monstres...", blanc);
+      texturePerdu = SDL_CreateTextureFromSurface(pRenderer, perdu);
       erreur = TTF_RenderText_Solid(font, "Erreur! Personne n'a gagne...", blanc);
       textureErreur = SDL_CreateTextureFromSurface(pRenderer, erreur);
 
@@ -477,6 +527,7 @@ void afficheGagnant(int id_joueur){
               }
           }
 
+          //Affiche les textes en fonction du mode gagnant
           switch(id_joueur){
             case 1:
               rect.x = 200 - ((vJ1->w)/2);
@@ -506,6 +557,13 @@ void afficheGagnant(int id_joueur){
               rect.h = vJ4->h;
               SDL_RenderCopy(pRenderer, textureVJ4, NULL, &rect);
               break;
+            case 0:
+              rect.x = 300 - ((perdu->w)/2);
+              rect.y = 200 - ((perdu->h)/2);
+              rect.w = perdu->w;
+              rect.h = perdu->h;
+              SDL_RenderCopy(pRenderer, texturePerdu, NULL, &rect);
+              break;
             default:
               rect.x = 300 - ((erreur->w)/2);
               rect.y = 200 - ((erreur->h)/2);
@@ -522,12 +580,14 @@ void afficheGagnant(int id_joueur){
       SDL_DestroyTexture(textureVJ3);
       SDL_DestroyTexture(textureVJ4);
       SDL_DestroyTexture(textureErreur);
+      SDL_DestroyTexture(texturePerdu);
 
       SDL_FreeSurface(vJ1);
       SDL_FreeSurface(vJ2);
       SDL_FreeSurface(vJ3);
       SDL_FreeSurface(vJ4);
       SDL_FreeSurface(erreur);
+      SDL_FreeSurface(perdu);
 
       //Libération mémoire du rendu
 
@@ -551,6 +611,11 @@ void afficheGagnant(int id_joueur){
 }
 
 
+/**
+*\fn int menuSolo()
+*\brief Cette fonction affiche un menu qui propose trois choix pour le niveau contre les monstres, 1, 2 ou 3.
+*\return Une valeur comprise entre 1 et 3 qui correspond au niveau choisit et -1 si l'utilisateur décide de fermer la fenêtre.
+*/
 int menuSolo(){
   TTF_Init();
   int val = 1 ; // valeur du nombre de joueur
@@ -567,6 +632,7 @@ int menuSolo(){
       int continuer = 1;
       SDL_Event event;
 
+      //Initialisation de la police d'écriture :
       TTF_Font *font = TTF_OpenFont("../assets/fonts/Mermaid1001.ttf", 35);
 
       SDL_Surface *surface, *unOrange, *unBlanc, *deuxOrange, *deuxBlanc, *troisOrange, *troisBlanc;
@@ -575,6 +641,7 @@ int menuSolo(){
       SDL_Color blanc = {255, 255, 255, 0};
       SDL_Color orange = {255, 165, 0, 0};
 
+      //Les différents textes affichés peuvent être de deux couleurs différentes sauf pour "Choix du niveau :"
       surface = TTF_RenderText_Solid(font, "Choix du niveau :", orange);
       texture = SDL_CreateTextureFromSurface(pRenderer, surface);
 
@@ -602,7 +669,7 @@ int menuSolo(){
                 //fermer la fenêtre
                 case SDL_QUIT:
                   continuer=0;
-                  return(0);
+                  return(-1);
                   break;
 
                 case SDL_KEYDOWN:
@@ -629,12 +696,14 @@ int menuSolo(){
               }
           }
 
+          //Affiche le texte "Choix du niveau :" en orange
           rect.x = 200 - ((surface->w)/2);
           rect.y = 200 - ((surface->h)/2);
           rect.w = surface->w;
           rect.h = surface->h;
           SDL_RenderCopy(pRenderer, texture, NULL, &rect);
 
+          //Affiche les textes de la bonne couleur en fonction du mode sélectionné
           if(val==1){
             rect.x = 400 - ((unOrange->w)/2);
             rect.y = 200 - ((unOrange->h)/2);
@@ -699,6 +768,7 @@ int menuSolo(){
           SDL_RenderClear(pRenderer);
       }
 
+      //Destruction de toutes les textures
       SDL_DestroyTexture(texture);
       SDL_DestroyTexture(textureUnOrange);
       SDL_DestroyTexture(textureUnBlanc);
@@ -707,6 +777,7 @@ int menuSolo(){
       SDL_DestroyTexture(textureTroisOrange);
       SDL_DestroyTexture(textureTroisBlanc);
 
+      //Libération de toutes les surfaces
       SDL_FreeSurface(surface);
       SDL_FreeSurface(unOrange);
       SDL_FreeSurface(unBlanc);

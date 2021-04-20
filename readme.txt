@@ -1,3 +1,5 @@
+Voici notre diagramme de Gantt : https://docs.google.com/spreadsheets/d/1pbD8fEVVem7idec8Nq3pSLYzEdNMl2ucVOybE5-nVNw/edit?usp=sharing
+
 Pour lancer le programme lancez votre cmd
 mettez vous bien dans le dossier src du jeu
 Puis faites la commande suivante : "mingw32-make"

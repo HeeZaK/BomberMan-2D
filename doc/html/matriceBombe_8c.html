@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bomberman 2D: Référence du fichier matriceBombe.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bomberman 2D
+   </div>
+   <div id="projectbrief">Projet de Licence 2 Informatique sur la programmation du Bomberman en 2D</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier matriceBombe.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>fonctions concernant la gestion de la matrice  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &quot;../lib/matriceBombe.h&quot;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de matriceBombe.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="matriceBombe_8c__incl.png" border="0" usemap="#matriceBombe_8c" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ad70c67b9908558b68a4c5b418f0fe326"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="matriceBombe_8c.html#ad70c67b9908558b68a4c5b418f0fe326">innitMatrice</a> (int jeu[M][N])</td></tr>
+<tr class="memdesc:ad70c67b9908558b68a4c5b418f0fe326"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui vide la matrice en mettant chaque case à 0  <a href="matriceBombe_8c.html#ad70c67b9908558b68a4c5b418f0fe326">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad70c67b9908558b68a4c5b418f0fe326"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a694f1bd4e2335bcb9e0df42b30d0ac34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="matriceBombe_8c.html#a694f1bd4e2335bcb9e0df42b30d0ac34">placerMurIncassable</a> (int jeu[M][N])</td></tr>
+<tr class="memdesc:a694f1bd4e2335bcb9e0df42b30d0ac34"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui place les murs incassables  <a href="matriceBombe_8c.html#a694f1bd4e2335bcb9e0df42b30d0ac34">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a694f1bd4e2335bcb9e0df42b30d0ac34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac859523ef93a599eee8c248713387872"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="matriceBombe_8c.html#ac859523ef93a599eee8c248713387872">placerMurCassable</a> (int jeu[M][N], int proba)</td></tr>
+<tr class="memdesc:ac859523ef93a599eee8c248713387872"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui place les murs cassables. Mur cassable=2  <a href="matriceBombe_8c.html#ac859523ef93a599eee8c248713387872">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac859523ef93a599eee8c248713387872"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae19b7284a41913f4d0285feb0a67467a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="matriceBombe_8c.html#ae19b7284a41913f4d0285feb0a67467a">afficherMatrice</a> (int jeu[M][N])</td></tr>
+<tr class="memdesc:ae19b7284a41913f4d0285feb0a67467a"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui affiche la matrice dans le terminal  <a href="matriceBombe_8c.html#ae19b7284a41913f4d0285feb0a67467a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae19b7284a41913f4d0285feb0a67467a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>fonctions concernant la gestion de la matrice </p>
+<dl class="section author"><dt>Auteur</dt><dd>Ilango Rémi, Lardais Benjamin, Geslain Simon, Haran Andy </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>19 octobre 2021 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="ae19b7284a41913f4d0285feb0a67467a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae19b7284a41913f4d0285feb0a67467a">&#9670;&nbsp;</a></span>afficherMatrice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficherMatrice </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>jeu</em>[M][N]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui affiche la matrice dans le terminal </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">jeu</td><td>représente la matrice </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad70c67b9908558b68a4c5b418f0fe326"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad70c67b9908558b68a4c5b418f0fe326">&#9670;&nbsp;</a></span>innitMatrice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void innitMatrice </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>jeu</em>[M][N]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui vide la matrice en mettant chaque case à 0 </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">jeu</td><td>représente la matrice </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac859523ef93a599eee8c248713387872"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac859523ef93a599eee8c248713387872">&#9670;&nbsp;</a></span>placerMurCassable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void placerMurCassable </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>jeu</em>[M][N], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>proba</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui place les murs cassables. Mur cassable=2 </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">jeu</td><td>représente la matrice </td></tr>
+    <tr><td class="paramname">proba</td><td>représente la probabilité qu'un mur placé soit cassable </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a694f1bd4e2335bcb9e0df42b30d0ac34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a694f1bd4e2335bcb9e0df42b30d0ac34">&#9670;&nbsp;</a></span>placerMurIncassable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void placerMurIncassable </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>jeu</em>[M][N]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui place les murs incassables </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">jeu</td><td>représente la matrice </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

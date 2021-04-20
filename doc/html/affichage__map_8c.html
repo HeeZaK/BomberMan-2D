@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bomberman 2D: Référence du fichier affichage_map.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bomberman 2D
+   </div>
+   <div id="projectbrief">Projet de Licence 2 Informatique sur la programmation du Bomberman en 2D</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier affichage_map.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Ce fichier contient les deux fonctions nécessaires pour l'affichage de la carte de jeu avec les pouvoirs des joueurs qu'ils ont. C'est aussi un fichier qui permet d'actualiser la carte et le score avec les interactions sur la matrice.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_ttf.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_image.h&gt;</code><br />
+<code>#include &quot;../lib/bombe.h&quot;</code><br />
+<code>#include &quot;../lib/affichage_map.h&quot;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de affichage_map.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="affichage__map_8c__incl.png" border="0" usemap="#affichage__map_8c" alt=""/></div>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:abefec424c41f00cc046ac393dc4012c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage__map_8c.html#abefec424c41f00cc046ac393dc4012c9">afficherScore</a> (joueur_t j1, SDL_Renderer **renderer, int x, int y, int w, int h, SDL_Color color)</td></tr>
+<tr class="memdesc:abefec424c41f00cc046ac393dc4012c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui permet d'afficher le score. Affiche les points de vitesses, de puissances, le nombre de bombe, et si le joueur possède un bouclier ou non.  <a href="affichage__map_8c.html#abefec424c41f00cc046ac393dc4012c9">Plus de détails...</a><br /></td></tr>
+<tr class="separator:abefec424c41f00cc046ac393dc4012c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af69978a4bd283687a870d814561ec309"><td class="memItemLeft" align="right" valign="top">joueur_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage__map_8c.html#af69978a4bd283687a870d814561ec309">afficherMap</a> (joueur_t j1, joueur_t j2, joueur_t j3, joueur_t j4, int jeu[M][N])</td></tr>
+<tr class="memdesc:af69978a4bd283687a870d814561ec309"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui permet d'afficher la matrice avec les joueurs et les pouvoirs  <a href="affichage__map_8c.html#af69978a4bd283687a870d814561ec309">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af69978a4bd283687a870d814561ec309"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Ce fichier contient les deux fonctions nécessaires pour l'affichage de la carte de jeu avec les pouvoirs des joueurs qu'ils ont. C'est aussi un fichier qui permet d'actualiser la carte et le score avec les interactions sur la matrice. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Ilango Rémi, Lardais Benjamin, Geslain Simon, Haran Andy </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>19 avril 2021 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="af69978a4bd283687a870d814561ec309"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af69978a4bd283687a870d814561ec309">&#9670;&nbsp;</a></span>afficherMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">joueur_t * afficherMap </td>
+          <td>(</td>
+          <td class="paramtype">joueur_t&#160;</td>
+          <td class="paramname"><em>j1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">joueur_t&#160;</td>
+          <td class="paramname"><em>j2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">joueur_t&#160;</td>
+          <td class="paramname"><em>j3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">joueur_t&#160;</td>
+          <td class="paramname"><em>j4</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>jeu</em>[M][N]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui permet d'afficher la matrice avec les joueurs et les pouvoirs </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">j1</td><td>représente le joueur 1 </td></tr>
+    <tr><td class="paramname">j2</td><td>représente le joueur 2 </td></tr>
+    <tr><td class="paramname">j3</td><td>représente le joueur 3 </td></tr>
+    <tr><td class="paramname">j4</td><td>représente le joueur 4 </td></tr>
+    <tr><td class="paramname">jeu</td><td>représente la matrice. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>retourne le joueur qui a gagné </dd></dl>
+
+</div>
+</div>
+<a id="abefec424c41f00cc046ac393dc4012c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abefec424c41f00cc046ac393dc4012c9">&#9670;&nbsp;</a></span>afficherScore()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficherScore </td>
+          <td>(</td>
+          <td class="paramtype">joueur_t&#160;</td>
+          <td class="paramname"><em>j1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer **&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Color&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui permet d'afficher le score. Affiche les points de vitesses, de puissances, le nombre de bombe, et si le joueur possède un bouclier ou non. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">j1</td><td>représente le joueur 1 </td></tr>
+    <tr><td class="paramname">renderer</td><td>représente l'espace où l'on peut écrire </td></tr>
+    <tr><td class="paramname">x</td><td>représente la ligne dans la matrice </td></tr>
+    <tr><td class="paramname">y</td><td>représente la colonne dans la matrice </td></tr>
+    <tr><td class="paramname">w</td><td>représente la largeur de l'objet affiché </td></tr>
+    <tr><td class="paramname">h</td><td>représente la hauteur de l'objet affiché </td></tr>
+    <tr><td class="paramname">color</td><td>représente la couleur que l'on veut afficher </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

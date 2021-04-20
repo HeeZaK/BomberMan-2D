@@ -1,0 +1,421 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bomberman 2D: Référence du fichier monstre.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bomberman 2D
+   </div>
+   <div id="projectbrief">Projet de Licence 2 Informatique sur la programmation du Bomberman en 2D</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier monstre.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>fonctions concernant la gestion des monstres  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_ttf.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_image.h&gt;</code><br />
+<code>#include &quot;../lib/bombe.h&quot;</code><br />
+<code>#include &quot;../lib/monstre.h&quot;</code><br />
+<code>#include &quot;../lib/matriceBombe.h&quot;</code><br />
+<code>#include &quot;../lib/affichage_map.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de monstre.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="monstre_8c__incl.png" border="0" usemap="#monstre_8c" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a9c02705edbc2e698a448c4fa13d1c684"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monstre_8c.html#a9c02705edbc2e698a448c4fa13d1c684">effetBombeMonstre</a> (joueur_t *j1, monstre_t *m1, monstre_t *m2, monstre_t *m3, int x, int y, int jeu[M][N])</td></tr>
+<tr class="memdesc:a9c02705edbc2e698a448c4fa13d1c684"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui applique l'effet de la bombe sur le joueur, les murs, les monstres. Un mur cassé peut laisser un bonus.  <a href="monstre_8c.html#a9c02705edbc2e698a448c4fa13d1c684">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9c02705edbc2e698a448c4fa13d1c684"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac19da0e946516065c3b5e65ac285ea2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monstre_8c.html#ac19da0e946516065c3b5e65ac285ea2f">DetruireMonstre</a> (joueur_t *j1, monstre_t *m1, monstre_t *m2, monstre_t *m3, int k, int jeu[M][N])</td></tr>
+<tr class="memdesc:ac19da0e946516065c3b5e65ac285ea2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui détruit les monstres  <a href="monstre_8c.html#ac19da0e946516065c3b5e65ac285ea2f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac19da0e946516065c3b5e65ac285ea2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49ae433fa5c844479e69c76e66a60d1f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monstre_8c.html#a49ae433fa5c844479e69c76e66a60d1f">checkCollisionM</a> (joueur_t *j1, monstre_t *m, int direction, int jeu[M][N])</td></tr>
+<tr class="memdesc:a49ae433fa5c844479e69c76e66a60d1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui vérifie si le monstre peut se déplacer  <a href="monstre_8c.html#a49ae433fa5c844479e69c76e66a60d1f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a49ae433fa5c844479e69c76e66a60d1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada9eea7ad4cfe6f5fe3cf36a26884bc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monstre_8c.html#ada9eea7ad4cfe6f5fe3cf36a26884bc5">deplacerMonstre</a> (joueur_t *j1, monstre_t *m, char direction, int jeu[M][N])</td></tr>
+<tr class="memdesc:ada9eea7ad4cfe6f5fe3cf36a26884bc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui déplace le monstre  <a href="monstre_8c.html#ada9eea7ad4cfe6f5fe3cf36a26884bc5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ada9eea7ad4cfe6f5fe3cf36a26884bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f692b536dcd94efcc2e657d133ca3b9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monstre_8c.html#a0f692b536dcd94efcc2e657d133ca3b9">afficherMapMonstre</a> (joueur_t j1, monstre_t m1, monstre_t m2, monstre_t m3, int jeu[M][N])</td></tr>
+<tr class="memdesc:a0f692b536dcd94efcc2e657d133ca3b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui affiche la matrice, les bonus, les monstres et le joueur  <a href="monstre_8c.html#a0f692b536dcd94efcc2e657d133ca3b9">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0f692b536dcd94efcc2e657d133ca3b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>fonctions concernant la gestion des monstres </p>
+<dl class="section author"><dt>Auteur</dt><dd>Ilango Rémi, Lardais Benjamin, Geslain Simon, Haran Andy </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>19 avril 2021 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a0f692b536dcd94efcc2e657d133ca3b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f692b536dcd94efcc2e657d133ca3b9">&#9670;&nbsp;</a></span>afficherMapMonstre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int afficherMapMonstre </td>
+          <td>(</td>
+          <td class="paramtype">joueur_t&#160;</td>
+          <td class="paramname"><em>j1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monstre_t&#160;</td>
+          <td class="paramname"><em>m1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monstre_t&#160;</td>
+          <td class="paramname"><em>m2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monstre_t&#160;</td>
+          <td class="paramname"><em>m3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>jeu</em>[M][N]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui affiche la matrice, les bonus, les monstres et le joueur </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">j1</td><td>représente le joueur </td></tr>
+    <tr><td class="paramname">m1</td><td>représente le monstre 1 </td></tr>
+    <tr><td class="paramname">m2</td><td>représente le monstre 2 </td></tr>
+    <tr><td class="paramname">m3</td><td>représente le monstre 3 </td></tr>
+    <tr><td class="paramname">jeu</td><td>représente la matrice </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 lorsque le joueur perd et 1 quand il gagne </dd></dl>
+
+</div>
+</div>
+<a id="a49ae433fa5c844479e69c76e66a60d1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49ae433fa5c844479e69c76e66a60d1f">&#9670;&nbsp;</a></span>checkCollisionM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int checkCollisionM </td>
+          <td>(</td>
+          <td class="paramtype">joueur_t *&#160;</td>
+          <td class="paramname"><em>j1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monstre_t *&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>direction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>jeu</em>[M][N]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui vérifie si le monstre peut se déplacer </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">j1</td><td>représente le joueur </td></tr>
+    <tr><td class="paramname">m</td><td>représente un monstre </td></tr>
+    <tr><td class="paramname">direction</td><td>représente la direction dans laquelle regarde le monstre </td></tr>
+    <tr><td class="paramname">jeu</td><td>représente la matrice </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>retourne 0 si le déplacement est impossible ou 1 s'il est possible </dd></dl>
+
+</div>
+</div>
+<a id="ada9eea7ad4cfe6f5fe3cf36a26884bc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada9eea7ad4cfe6f5fe3cf36a26884bc5">&#9670;&nbsp;</a></span>deplacerMonstre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void deplacerMonstre </td>
+          <td>(</td>
+          <td class="paramtype">joueur_t *&#160;</td>
+          <td class="paramname"><em>j1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monstre_t *&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>direction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>jeu</em>[M][N]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui déplace le monstre </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">j1</td><td>représente le joueur </td></tr>
+    <tr><td class="paramname">m</td><td>représente un monstre </td></tr>
+    <tr><td class="paramname">direction</td><td>représente la direction dans laquelle regarde le monstre </td></tr>
+    <tr><td class="paramname">jeu</td><td>représente la matrice </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac19da0e946516065c3b5e65ac285ea2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac19da0e946516065c3b5e65ac285ea2f">&#9670;&nbsp;</a></span>DetruireMonstre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DetruireMonstre </td>
+          <td>(</td>
+          <td class="paramtype">joueur_t *&#160;</td>
+          <td class="paramname"><em>j1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monstre_t *&#160;</td>
+          <td class="paramname"><em>m1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monstre_t *&#160;</td>
+          <td class="paramname"><em>m2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monstre_t *&#160;</td>
+          <td class="paramname"><em>m3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>jeu</em>[M][N]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui détruit les monstres </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">j1</td><td>représente le joueur </td></tr>
+    <tr><td class="paramname">m1</td><td>représente le monstre 1 </td></tr>
+    <tr><td class="paramname">m2</td><td>représente le monstre 2 </td></tr>
+    <tr><td class="paramname">m3</td><td>représente le monstre 3 </td></tr>
+    <tr><td class="paramname">k</td><td>représente l'indice de la bombe qu'utilise le joueur </td></tr>
+    <tr><td class="paramname">jeu</td><td>représente la matrice </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9c02705edbc2e698a448c4fa13d1c684"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c02705edbc2e698a448c4fa13d1c684">&#9670;&nbsp;</a></span>effetBombeMonstre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void effetBombeMonstre </td>
+          <td>(</td>
+          <td class="paramtype">joueur_t *&#160;</td>
+          <td class="paramname"><em>j1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monstre_t *&#160;</td>
+          <td class="paramname"><em>m1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monstre_t *&#160;</td>
+          <td class="paramname"><em>m2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monstre_t *&#160;</td>
+          <td class="paramname"><em>m3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>jeu</em>[M][N]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui applique l'effet de la bombe sur le joueur, les murs, les monstres. Un mur cassé peut laisser un bonus. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">j1</td><td>représente le joueur </td></tr>
+    <tr><td class="paramname">m1</td><td>représente le monstre 1 </td></tr>
+    <tr><td class="paramname">m2</td><td>représente le monstre 2 </td></tr>
+    <tr><td class="paramname">m3</td><td>représente le monstre 3 </td></tr>
+    <tr><td class="paramname">x</td><td>représente la ligne dans la matrice </td></tr>
+    <tr><td class="paramname">y</td><td>représente la colonne dans la matrice </td></tr>
+    <tr><td class="paramname">jeu</td><td>représente la matrice </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

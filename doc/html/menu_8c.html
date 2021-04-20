@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bomberman 2D: Référence du fichier menu.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bomberman 2D
+   </div>
+   <div id="projectbrief">Projet de Licence 2 Informatique sur la programmation du Bomberman en 2D</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier menu.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Ce fichier regroupe les différents menus qui permet de choisir les options que nous voulons. Il y a aussi tous les affichages textes qui ne sont pas sur la carte de jeu.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_ttf.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_image.h&gt;</code><br />
+<code>#include &quot;../lib/bombe.h&quot;</code><br />
+<code>#include &quot;../lib/affichage_map.h&quot;</code><br />
+<code>#include &quot;../lib/menu.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de menu.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="menu_8c__incl.png" border="0" usemap="#menu_8c" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ae83fcdbeb2b6757fc741ae953b633ee1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#ae83fcdbeb2b6757fc741ae953b633ee1">menu</a> ()</td></tr>
+<tr class="memdesc:ae83fcdbeb2b6757fc741ae953b633ee1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction affiche un menu qui propose trois choix, le mode multijoueur, le mode ou exit pour quitter.  <a href="menu_8c.html#ae83fcdbeb2b6757fc741ae953b633ee1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae83fcdbeb2b6757fc741ae953b633ee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fe3fa2e85a41205e6dabc399e8e13cd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a3fe3fa2e85a41205e6dabc399e8e13cd">menuMultijoueur</a> ()</td></tr>
+<tr class="memdesc:a3fe3fa2e85a41205e6dabc399e8e13cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction affiche un menu qui propose trois choix pour le nombre de joueur, 2, 3 ou 4.  <a href="menu_8c.html#a3fe3fa2e85a41205e6dabc399e8e13cd">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3fe3fa2e85a41205e6dabc399e8e13cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4bb6d8164a5727f6435e911938aaf09"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#aa4bb6d8164a5727f6435e911938aaf09">lancerPartieMulti</a> (int nb_joueur)</td></tr>
+<tr class="memdesc:aa4bb6d8164a5727f6435e911938aaf09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction lance une partie en mutlijoueur local en fonction du nombre de joueur sélectionné dans le menu.  <a href="menu_8c.html#aa4bb6d8164a5727f6435e911938aaf09">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa4bb6d8164a5727f6435e911938aaf09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86864d1187230fe71a0eb8764bc0485b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a86864d1187230fe71a0eb8764bc0485b">afficheGagnant</a> (int id_joueur)</td></tr>
+<tr class="memdesc:a86864d1187230fe71a0eb8764bc0485b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction affiche le gagnant à l'écran.  <a href="menu_8c.html#a86864d1187230fe71a0eb8764bc0485b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a86864d1187230fe71a0eb8764bc0485b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad28a0028c7049f36dd1f755120a6239e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#ad28a0028c7049f36dd1f755120a6239e">menuSolo</a> ()</td></tr>
+<tr class="memdesc:ad28a0028c7049f36dd1f755120a6239e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction affiche un menu qui propose trois choix pour le niveau contre les monstres, 1, 2 ou 3.  <a href="menu_8c.html#ad28a0028c7049f36dd1f755120a6239e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad28a0028c7049f36dd1f755120a6239e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Ce fichier regroupe les différents menus qui permet de choisir les options que nous voulons. Il y a aussi tous les affichages textes qui ne sont pas sur la carte de jeu. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Ilango Rémi, Lardais Benjamin, Geslain Simon, Haran Andy </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>19 avril 2021 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a86864d1187230fe71a0eb8764bc0485b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86864d1187230fe71a0eb8764bc0485b">&#9670;&nbsp;</a></span>afficheGagnant()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficheGagnant </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id_joueur</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette fonction affiche le gagnant à l'écran. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">int</td><td>id_joueur, identifiant du joueur qui a gagné la partie </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa4bb6d8164a5727f6435e911938aaf09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4bb6d8164a5727f6435e911938aaf09">&#9670;&nbsp;</a></span>lancerPartieMulti()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int lancerPartieMulti </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_joueur</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette fonction lance une partie en mutlijoueur local en fonction du nombre de joueur sélectionné dans le menu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">int</td><td>nb_joueur correspond au nombre de joueur qui joue </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>L'identifiant du gagnant qui a réussi à éliminer tout ses adversaires. </dd></dl>
+
+</div>
+</div>
+<a id="ae83fcdbeb2b6757fc741ae953b633ee1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae83fcdbeb2b6757fc741ae953b633ee1">&#9670;&nbsp;</a></span>menu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int menu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette fonction affiche un menu qui propose trois choix, le mode multijoueur, le mode ou exit pour quitter. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Une valeur comprise entre 1 et 3 qui correspond au mode choisit et -1 si l'utilisateur décide de fermer la fenêtre. </dd></dl>
+
+</div>
+</div>
+<a id="a3fe3fa2e85a41205e6dabc399e8e13cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fe3fa2e85a41205e6dabc399e8e13cd">&#9670;&nbsp;</a></span>menuMultijoueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int menuMultijoueur </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette fonction affiche un menu qui propose trois choix pour le nombre de joueur, 2, 3 ou 4. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Une valeur comprise entre 2 et 4 qui correspond au mode choisit et -1 si l'utilisateur décide de fermer la fenêtre. </dd></dl>
+
+</div>
+</div>
+<a id="ad28a0028c7049f36dd1f755120a6239e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad28a0028c7049f36dd1f755120a6239e">&#9670;&nbsp;</a></span>menuSolo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int menuSolo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette fonction affiche un menu qui propose trois choix pour le niveau contre les monstres, 1, 2 ou 3. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Une valeur comprise entre 1 et 3 qui correspond au niveau choisit et -1 si l'utilisateur décide de fermer la fenêtre. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>
